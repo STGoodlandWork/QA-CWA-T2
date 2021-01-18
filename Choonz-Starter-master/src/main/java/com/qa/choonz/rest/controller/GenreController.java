@@ -54,5 +54,9 @@ public class GenreController {
         return this.service.delete(id) ? new ResponseEntity<GenreDTO>(HttpStatus.NO_CONTENT)
                 : new ResponseEntity<GenreDTO>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
+    @GetMapping("/search/{query}")
+    public ResponseEntity<List<GenreDTO>> search(@PathVariable String query) {
+        return new ResponseEntity<List<GenreDTO>>(this.service.search(query), HttpStatus.OK);
+    }
 
 }

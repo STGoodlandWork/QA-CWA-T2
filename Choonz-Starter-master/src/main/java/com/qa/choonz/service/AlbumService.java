@@ -55,5 +55,9 @@ public class AlbumService {
         this.repo.deleteById(id);
         return !this.repo.existsById(id);
     }
+    
+    public List<AlbumDTO> search(String query) {
+    	return this.repo.search(query).stream().map(this::mapToDTO).collect(Collectors.toList());
+    }
 
 }

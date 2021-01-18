@@ -54,5 +54,9 @@ public class AlbumController {
         return this.service.delete(id) ? new ResponseEntity<AlbumDTO>(HttpStatus.NO_CONTENT)
                 : new ResponseEntity<AlbumDTO>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
+    @GetMapping("/search/{query}")
+    public ResponseEntity<List<AlbumDTO>> search(@PathVariable String query) {
+        return new ResponseEntity<List<AlbumDTO>>(this.service.search(query), HttpStatus.OK);
+    }
 
 }
