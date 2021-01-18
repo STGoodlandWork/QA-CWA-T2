@@ -18,7 +18,7 @@ import com.qa.choonz.rest.dto.PlaylistDTO;
 import com.qa.choonz.service.PlaylistService;
 
 @RestController
-@RequestMapping("/playlists")
+@RequestMapping("/playlist")
 @CrossOrigin
 public class PlaylistController {
 

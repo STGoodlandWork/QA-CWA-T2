@@ -18,7 +18,7 @@ import com.qa.choonz.rest.dto.GenreDTO;
 import com.qa.choonz.service.GenreService;
 
 @RestController
-@RequestMapping("/genres")
+@RequestMapping("/genre")
 @CrossOrigin
 public class GenreController {
 
