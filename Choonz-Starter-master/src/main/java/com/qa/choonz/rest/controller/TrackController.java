@@ -19,7 +19,7 @@ import com.qa.choonz.rest.dto.TrackDTO;
 import com.qa.choonz.service.TrackService;
 
 @RestController
-@RequestMapping("/tracks")
+@RequestMapping("/track")
 @CrossOrigin
 public class TrackController {
 
@@ -56,4 +56,8 @@ public class TrackController {
 		return this.service.delete(id) ? new ResponseEntity<TrackDTO>(HttpStatus.NO_CONTENT)
 				: new ResponseEntity<TrackDTO>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
+	@GetMapping("/search/{query}")
+    public ResponseEntity<List<TrackDTO>> search(@PathVariable String query) {
+        return new ResponseEntity<List<TrackDTO>>(this.service.search(query), HttpStatus.OK);
+    }
 }

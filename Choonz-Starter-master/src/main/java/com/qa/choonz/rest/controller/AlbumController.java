@@ -18,7 +18,7 @@ import com.qa.choonz.rest.dto.AlbumDTO;
 import com.qa.choonz.service.AlbumService;
 
 @RestController
-@RequestMapping("/albums")
+@RequestMapping("/album")
 @CrossOrigin
 public class AlbumController {
 
@@ -53,6 +53,10 @@ public class AlbumController {
     public ResponseEntity<AlbumDTO> delete(@PathVariable long id) {
         return this.service.delete(id) ? new ResponseEntity<AlbumDTO>(HttpStatus.NO_CONTENT)
                 : new ResponseEntity<AlbumDTO>(HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+    @GetMapping("/search/{query}")
+    public ResponseEntity<List<AlbumDTO>> search(@PathVariable String query) {
+        return new ResponseEntity<List<AlbumDTO>>(this.service.search(query), HttpStatus.OK);
     }
 
 }

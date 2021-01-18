@@ -18,7 +18,7 @@ import com.qa.choonz.rest.dto.GenreDTO;
 import com.qa.choonz.service.GenreService;
 
 @RestController
-@RequestMapping("/genres")
+@RequestMapping("/genre")
 @CrossOrigin
 public class GenreController {
 
@@ -53,6 +53,10 @@ public class GenreController {
     public ResponseEntity<GenreDTO> delete(@PathVariable long id) {
         return this.service.delete(id) ? new ResponseEntity<GenreDTO>(HttpStatus.NO_CONTENT)
                 : new ResponseEntity<GenreDTO>(HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+    @GetMapping("/search/{query}")
+    public ResponseEntity<List<GenreDTO>> search(@PathVariable String query) {
+        return new ResponseEntity<List<GenreDTO>>(this.service.search(query), HttpStatus.OK);
     }
 
 }
