@@ -55,5 +55,9 @@ public class ArtistController {
 		return this.service.delete(id) ? new ResponseEntity<ArtistDTO>(HttpStatus.NO_CONTENT)
 				: new ResponseEntity<ArtistDTO>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
+	 @GetMapping("/search/{query}")
+	    public ResponseEntity<List<ArtistDTO>> search(@PathVariable String query) {
+	        return new ResponseEntity<List<ArtistDTO>>(this.service.search(query), HttpStatus.OK);
+	    }
 
 }
