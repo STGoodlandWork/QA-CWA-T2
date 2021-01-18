@@ -49,7 +49,7 @@
         <div class="inputs">
             <div class="track-inputs">
                 <form class="form-inline d-flex justify-content-center md-form form-sm">
-                    <input class="form-control form-control-sm mr-1 w-75" type="text"
+                    <input id="track-input" class="form-control form-control-sm mr-1 w-75" type="text"
                         placeholder="Search by track name, artist, genre, album..." aria-label="Search">
                 </form>
             </div>
@@ -58,20 +58,16 @@
         <div class="buttons">
             <div class="buttons-track-search">
                 <form class="form-inline d-flex justify-content-center md-form form-sm">
-                    <button type="submit" id="search-track"> Search by track</button>
+                    <button type="submit" id="searchTrackButton"> Search by track</button>
                 </form>
-                <div class="buttons-track-search">
-                    <form class="form-inline d-flex justify-content-center md-form form-sm">
-                        <button type="submit" id="search-track"> Search</button>
-                    </form>
-                </div>
             </div>
-
-
         </div>
+        <div id="myDiv"></div>
+
     </div>
 
     <!-- /Search -->
+    <script src="js/front.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
