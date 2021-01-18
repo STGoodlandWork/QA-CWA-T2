@@ -11,7 +11,7 @@ readAllTracksButton.onclick = async () => {
 };
 
 async function readAllTracks() {
-  let response = await fetch(`http://localhost:9092/track/read`, {
+  let response = await fetch(`http://localhost:8082/tracks/search`, {
     method: "GET",
     headers: {
       "Content-type": "application/json ",
