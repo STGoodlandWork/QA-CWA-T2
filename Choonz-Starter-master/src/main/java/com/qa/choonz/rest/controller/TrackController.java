@@ -19,7 +19,7 @@ import com.qa.choonz.rest.dto.TrackDTO;
 import com.qa.choonz.service.TrackService;
 
 @RestController
-@RequestMapping("/tracks")
+@RequestMapping("/track")
 @CrossOrigin
 public class TrackController {
 

@@ -19,7 +19,7 @@ import com.qa.choonz.rest.dto.ArtistDTO;
 import com.qa.choonz.service.ArtistService;
 
 @RestController
-@RequestMapping("/artists")
+@RequestMapping("/artist")
 @CrossOrigin
 public class ArtistController {
 

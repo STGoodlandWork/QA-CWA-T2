@@ -18,7 +18,7 @@ import com.qa.choonz.rest.dto.AlbumDTO;
 import com.qa.choonz.service.AlbumService;
 
 @RestController
-@RequestMapping("/albums")
+@RequestMapping("/album")
 @CrossOrigin
 public class AlbumController {
 
