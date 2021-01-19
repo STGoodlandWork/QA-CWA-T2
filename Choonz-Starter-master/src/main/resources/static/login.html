@@ -17,9 +17,9 @@
     <div class="wrapper">
         <div class="title-text">
             <div class="title login">
-                Login Form</div>
+                Login</div>
             <div class="title signup">
-                Signup Form</div>
+                Register</div>
         </div>
         <div class="form-container">
             <div class="slide-controls">
@@ -31,12 +31,20 @@
                 </div>
             </div>
             <div class="form-inner">
-                <form action="#" class="login">
+                <form action="index.html" class="login" method="post" name="form">
                     <div class="field">
-                        <input type="text" placeholder="Email Address" required>
+                        <input type="text" placeholder="Username" name="username" required>
+                        <div id="user_error">Please enter a valid username. Ensure it is at least 5 characters long.
+                        </div>
                     </div>
                     <div class="field">
-                        <input type="password" placeholder="Password" required>
+                        <input type="email" placeholder="Email Address" name="email" required>
+                        <div id="email_error">Please enter a valid email address. </div>
+                    </div>
+                    <div class="field">
+                        <input type="password" placeholder="Password" name="password" required>
+                        <div id="pass_error">Please enter a valid password. Ensure it is at least 8 characters long.
+                        </div>
                     </div>
                     <div class="pass-link">
                         <a href="#">Forgot password?</a>
@@ -49,9 +57,14 @@
                     <div class="signup-link">
                         Not a member? <a href="">Signup now</a></div>
                 </form>
-                <form action="#" class="signup">
+                <form action="index.html" class="signup" method="post" name="form">
                     <div class="field">
-                        <input type="text" placeholder="Email Address" required>
+                        <input type="text" placeholder="Username" name="username" required>
+                        <div id="user_error">Please enter a username. Ensure it is at least 5 characters long. </div>
+                    </div>
+                    <div class="field">
+                        <input type="email" placeholder="Email Address" name="email" required>
+                        <div id="email_error">Please enter a valid email address. </div>
                     </div>
                     <div class="field">
                         <input type="password" placeholder="Password" required>
@@ -68,6 +81,7 @@
             </div>
         </div>
     </div>
+    <script src="js/validate.js"> </script>
     <script>
         const loginText = document.querySelector(".title-text .login");
         const loginForm = document.querySelector("form.login");
