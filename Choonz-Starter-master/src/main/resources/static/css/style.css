@@ -4,6 +4,10 @@
   font-family: sans-serif;
 }
 
+body {
+  padding-top: 70px;
+}
+
 .login {
   height: 100%;
   width: 100%;

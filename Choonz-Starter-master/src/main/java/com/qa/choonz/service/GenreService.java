@@ -51,5 +51,8 @@ public class GenreService {
         this.repo.deleteById(id);
         return !this.repo.existsById(id);
     }
+    public List<GenreDTO> search(String query) {
+    	return this.repo.search(query).stream().map(this::mapToDTO).collect(Collectors.toList());
+    }
 
 }

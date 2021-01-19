@@ -6,24 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="/css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/lux/bootstrap.min.css"
+        integrity="sha384-9+PGKSqjRdkeAU7Eu4nkJU8RFaH8ace8HGXnkiKMP9I9Te0GJ4/km3L1Z8tXigpG" crossorigin="anonymous">
     <title>Choonz Artists</title>
 </head>
 
 <body>
-    <!-- Navbar -->
 
-    <nav class="navbar fixed-top navbar-expand-lg bg-light navbar-light">
-        <a class="navbar-brand" href="./">
-            <img class="logo" src="../img/Choonz.jpg" width="auto" ml-auto height="50"></a>
-        <button class="navbar-toggler collapsed border-0" type="button" data-toggle="collapse"
-            data-target="#collapsingNavbar">
+    <!-- Navbar 2-->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+
+        <img class="logo" src="../img/Choonz.png" href="./" width="auto" ml-auto height="50"></a>
+
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
+            aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-            <div class="close-icon py-1">✖</div>
         </button>
-        <div class="collapse navbar-collapse" id="collapsingNavbar">
-            <ul class="nav navbar-nav">
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="tracks.html">Featured Tracks</a>
                 </li>
@@ -33,14 +35,38 @@
                 <li class="nav-item">
                     <a class="nav-link" href="playlists.html">Top Playlists</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">Genre</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="">Login</a>
+                </li>
+
             </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" id="artist-input" placeholder="Search">
+                <button class="btn btn-success my-2 my-sm-0" id="searchArtistButton" type="submit">Search</button>
+            </form>
         </div>
     </nav>
-    <!-- /Navbar -->
+
+    <!--/Navbar 2-->
+
+    <!--Jumbotron-->
+    <div class="jumbotron bg-primary text-light">
+        <h1 class="display-3 text-light">Artists</h1>
+        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to
+            featured content or information.</p>
+    </div>
+
+    <!--/Jumbotron-->
 
     <!-- /main -->
+    <div=artistDiv>
 
-    <h1> Put some stuff here</h1>
+    </div>
+    <h1> This is the Artist Page</h1>
 
 
 
