@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/login.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -14,52 +14,78 @@
 
 
 <body>
-    <div class="login">
-        <div class="form-box">
-            <div class="button-box">
-                <div id="btn"></div>
-                <button type="button" class="toggle-btn" onclick="login()">Log In</button>
-                <button type="button" class="toggle-btn" onclick="register()">Register</button>
-
-            </div>
-            <form id="login" class="input-group" style="float: left;">
-                <input type="text" class="input-field" placeholder="User Id" required>
-                <input type="text" class="input-field" placeholder="Enter Password" required>
-                <input type="checkbox" class="check-box"> <span>Remember Password</span>
-                <button type="submit" class="submit-btn">Log in</button>
-            </form>
-            <form id="register" class="input-group" style="float: right;">
-                <input type="text" class="input-field" placeholder="User Id" required>
-                <input type="email" class="input-field" placeholder="Email Id" required>
-                <input type="text" class="input-field" placeholder="Enter Password" required>
-                <input type="checkbox" class="check-box"> <span>A agree to the terms & conditions</span>
-                <button type="submit" class="submit-btn">Register</button>
-            </form>
+    <div class="wrapper">
+        <div class="title-text">
+            <div class="title login">
+                Login Form</div>
+            <div class="title signup">
+                Signup Form</div>
         </div>
-
+        <div class="form-container">
+            <div class="slide-controls">
+                <input type="radio" name="slide" id="login" checked>
+                <input type="radio" name="slide" id="signup">
+                <label for="login" class="slide login">Login</label>
+                <label for="signup" class="slide signup">Signup</label>
+                <div class="slider-tab">
+                </div>
+            </div>
+            <div class="form-inner">
+                <form action="#" class="login">
+                    <div class="field">
+                        <input type="text" placeholder="Email Address" required>
+                    </div>
+                    <div class="field">
+                        <input type="password" placeholder="Password" required>
+                    </div>
+                    <div class="pass-link">
+                        <a href="#">Forgot password?</a>
+                    </div>
+                    <div class="field btn">
+                        <div class="btn-layer">
+                        </div>
+                        <input type="submit" value="Login">
+                    </div>
+                    <div class="signup-link">
+                        Not a member? <a href="">Signup now</a></div>
+                </form>
+                <form action="#" class="signup">
+                    <div class="field">
+                        <input type="text" placeholder="Email Address" required>
+                    </div>
+                    <div class="field">
+                        <input type="password" placeholder="Password" required>
+                    </div>
+                    <div class="field">
+                        <input type="password" placeholder="Confirm password" required>
+                    </div>
+                    <div class="field btn">
+                        <div class="btn-layer">
+                        </div>
+                        <input type="submit" value="Signup">
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-
-
-
-
-
     <script>
-        var x = document.getElementById("login");
-        var y = document.getElementById("register");
-        var z = document.getElementById("btn");
-
-        function register() {
-            x.style.left = "-525px";
-            y.style.left = "50px";
-            z.style.left = "110px";
-        }
-
-        function login() {
-            x.style.left = "50px";
-            y.style.left = "450px";
-            z.style.left = "0px";
-        }
-
+        const loginText = document.querySelector(".title-text .login");
+        const loginForm = document.querySelector("form.login");
+        const loginBtn = document.querySelector("label.login");
+        const signupBtn = document.querySelector("label.signup");
+        const signupLink = document.querySelector("form .signup-link a");
+        signupBtn.onclick = (() => {
+            loginForm.style.marginLeft = "-50%";
+            loginText.style.marginLeft = "-50%";
+        });
+        loginBtn.onclick = (() => {
+            loginForm.style.marginLeft = "0%";
+            loginText.style.marginLeft = "0%";
+        });
+        signupLink.onclick = (() => {
+            signupBtn.click();
+            return false;
+        });
     </script>
 
 </body>
