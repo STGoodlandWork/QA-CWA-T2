@@ -1,13 +1,46 @@
-let nameElement = document.getElementById("track-input");
+let trackNameElement = document.getElementById("track-input");
 let trackName = "";
-nameElement.addEventListener("input", (event) => {
+trackNameElement.addEventListener("input", (event) => {
+  trackName = event.target.value;
+});
+
+let artistNameElement = document.getElementById("artist-input");
+let artistName = "";
+artistNameElement.addEventListener("input", (event) => {
+  artistName = event.target.value;
+});
+
+let playlistNameElement = document.getElementById("playlist-input");
+let playlistName = "";
+playlistNameElement.addEventListener("input", (event) => {
+  trackName = event.target.value;
+});
+
+let genreNameElement = document.getElementById("genre-input");
+let genreName = "";
+playlistNameElement.addEventListener("input", (event) => {
   trackName = event.target.value;
 });
 
 let readAllTracksButton = document.getElementById("searchTrackButton");
+let readAllArtistsButton = document.getElementById("searchArtistButton");
+let readAllPlaylistsButton = document.getElementById("searchPlaylistButton");
+let readAllGeneresButton = document.getElementById("searchGenreButton");
 
 readAllTracksButton.onclick = async () => {
   await readAllTracks();
+};
+
+readAllArtistsButton.onclick = async () => {
+  await readAllArtists();
+};
+
+readAllPlaylistsButton.onclick = async () => {
+  await readAllPlaylists();
+};
+
+readAllGenresButton.onclick = async () => {
+  await readAllGenres();
 };
 
 async function readAllTracks() {
@@ -33,6 +66,90 @@ async function readAllTracks() {
 
   for (let data_i of data) {
     let track = `Track ID: ${data_i.id}<br>Name: ${data_i.name}<br>`;
+    tracks.push(track);
+  }
+  div.innerHTML = tracks.join("");
+}
+
+async function readAllArtists() {
+  let response = await fetch(`http://localhost:8082/artists/search`, {
+    method: "GET",
+    headers: {
+      "Content-type": "application/json ",
+    },
+  });
+
+  if (!response.ok) {
+    console.log(
+      `Looks like there was a problem. Status Code: ${response.status}`
+    );
+    return;
+  }
+
+  let data = await response.json();
+  console.log(data);
+
+  let div = document.getElementById("myDiv");
+  let tracks = [];
+
+  for (let data_i of data) {
+    let track = `Artist ID: ${data_i.id}<br>Name: ${data_i.name}<br>`;
+    tracks.push(track);
+  }
+  div.innerHTML = tracks.join("");
+}
+
+async function readAllPlaylists() {
+  let response = await fetch(`http://localhost:8082/playlists/search`, {
+    method: "GET",
+    headers: {
+      "Content-type": "application/json ",
+    },
+  });
+
+  if (!response.ok) {
+    console.log(
+      `Looks like there was a problem. Status Code: ${response.status}`
+    );
+    return;
+  }
+
+  let data = await response.json();
+  console.log(data);
+
+  let div = document.getElementById("myDiv");
+  let tracks = [];
+
+  for (let data_i of data) {
+    let track = `Playlist ID: ${data_i.id}<br>Name: ${data_i.name}<br>`;
+    tracks.push(track);
+  }
+  div.innerHTML = tracks.join("");
+}
+
+async function readAllGenres() {
+  let response = await fetch(`http://localhost:8082/genre/search`, {
+    method: "GET",
+    headers: {
+      "Content-type": "application/json ",
+    },
+  });
+
+  if (!response.ok) {
+    console.log(
+      `Looks like there was a problem. Status Code: ${response.status}`
+    );
+    return;
+  }
+
+  let data = await response.json();
+  console.log(data);
+
+  let div = document.getElementById("myDiv");
+  let tracks = [];
+
+  for (let data_i of data) {
+    let track = `Genre ID: ${data_i.id}<br>Name: ${data_i.name}<br>`;
     tracks.push(track);
   }
   div.innerHTML = tracks.join("");
