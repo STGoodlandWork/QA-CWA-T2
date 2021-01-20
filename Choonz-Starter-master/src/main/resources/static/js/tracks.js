@@ -7,10 +7,10 @@ trackNameElement.addEventListener("input", (event) => {
 let searchAllFieldsButton = document.getElementById("searchTrackButton");
 
 searchAllFieldsButton.onclick = async () => {
-  await searchAll();
+  await searchAllTracks();
 };
 
-async function searchAll() {
+async function searchAllTracks() {
   let response = await fetch(`http://localhost:8082/tracks/search`, {
     method: "GET",
     headers: {

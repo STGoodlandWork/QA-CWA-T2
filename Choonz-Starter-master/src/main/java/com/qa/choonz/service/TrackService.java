@@ -49,7 +49,7 @@ public class TrackService {
 	// Update
 	public TrackDTO update(Track track, long id) {
 		Track toUpdate = this.repo.findById(id).orElseThrow(TrackNotFoundException::new);
-		toUpdate.setName(track.getName());
+		toUpdate.setTitle(track.getTitle());
 		toUpdate.setAlbum(track.getAlbum());
 		toUpdate.setDuration(track.getDuration());
 		toUpdate.setLyrics(track.getLyrics());
@@ -63,9 +63,9 @@ public class TrackService {
 		this.repo.deleteById(id);
 		return !this.repo.existsById(id);
 	}
-	public List<TrackDTO> search(String query) {
-    	return this.repo.search(query).stream().map(this::mapToDTO).collect(Collectors.toList());
-    }
 
+	public List<TrackDTO> search(String query) {
+		return this.repo.search(query).stream().map(this::mapToDTO).collect(Collectors.toList());
+	}
 
 }
