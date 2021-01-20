@@ -4,7 +4,7 @@ trackNameElement.addEventListener("input", (event) => {
   trackName = event.target.value;
 });
 
-let searchAllFieldsButton = document.getElementById("searchTrackButton");
+let searchAllFieldsButton = document.getElementById("searchButton");
 
 searchAllFieldsButton.onclick = async () => {
   await searchAll();
