@@ -32,19 +32,19 @@ public class AlbumServiceTest {
 	@Autowired
 	private ModelMapper mapper;
 
+	private AlbumDTO mapToDTO(Album album) {
+		return this.mapper.map(album, AlbumDTO.class);
+	}
+
 	private final Album test_album = new Album(1l, "We shall all be healed", null, null, null, "some url");
 	private final Album test_album2 = new Album(1l, "Tallahassee", null, null, null, "some url");
 	private final Album test_album3 = new Album(1l, "In League With Dragons", null, null, null, "some url");
 	private final Album test_album4 = new Album(1l, "The Sunset Tree", null, null, null, "some url");
 	private final List<Album> LIST_OF_ALBUMS = List.of(test_album, test_album2, test_album3, test_album4);
 
-	private AlbumDTO mapToDTO(Album album) {
-		return this.mapper.map(album, AlbumDTO.class);
-	}
-
 	@Test
 	void createTest() throws Exception {
-		Album album = new Album("We shall all be healed", "some url");
+		Album album = new Album(0l, "We shall all be healed", null, null, null, "some url");
 		Album albumFull = new Album(1l, "We shall all be healed", null, null, null, "some url");
 		when(this.repo.save(album)).thenReturn(albumFull);
 		assertThat(this.service.create(album)).isEqualTo(this.mapToDTO(albumFull));
