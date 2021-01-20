@@ -4,9 +4,10 @@ trackNameElement.addEventListener("input", (event) => {
   trackName = event.target.value;
 });
 
-let searchAllFieldsButton = document.getElementById("searchTrackButton");
+let createTrackButton = document.getElementById("createTrackButton");
+let searchAllTracksButton = document.getElementById("searchTrackButton");
 
-searchAllFieldsButton.onclick = async () => {
+searchAllTracksButton.onclick = async () => {
   await searchAllTracks();
 };
 
