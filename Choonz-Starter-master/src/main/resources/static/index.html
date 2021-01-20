@@ -12,39 +12,11 @@
 </head>
 
 <body>
-    <!--  Original Navbar -->
-    <!--
-    <nav class="navbar fixed-top navbar-expand-lg bg-light navbar-light">
-        <a class="navbar-brand" href="./">
-            <img class="logo" src="../img/Choonz.jpg" width="auto" ml-auto height="50"></a>
-        <button class="navbar-toggler collapsed border-0" type="button" data-toggle="collapse"
-            data-target="#collapsingNavbar">
-            <span class="navbar-toggler-icon"></span>
-            <div class="close-icon py-1">✖</div>
-        </button>
-        <div class="collapse navbar-collapse" id="collapsingNavbar">
-            <ul class="nav navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="tracks.html">Featured Tracks</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="artists.html">Artists</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="playlists.html">Top Playlists</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
--->
-
-    <!-- / Original Navbar -->
 
     <!-- Navbar 2-->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
 
-        <img class="logo" src="../img/Choonz.png" href="./" width="auto" ml-auto height="50"></a>
+        <a href="index.html"><img class="logo" src="../img/logo.png" width="auto" ml-auto height="50"></a>
 
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
@@ -68,48 +40,21 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="">Login</a>
+                    <a class="nav-link" href="login.html">Login</a>
                 </li>
 
             </ul>
             <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="text" id="track-input" placeholder="Search">
-                <button class="btn btn-success my-2 my-sm-0" id="searchTrackButton" type="submit">Search</button>
+                <input class="form-control mr-sm-2" type="text" id="search-input" placeholder="Search">
+                <button class="btn btn-success my-2 my-sm-0" id="searchButton" type="submit">Search</button>
             </form>
         </div>
     </nav>
 
     <!--/Navbar 2-->
 
-    <!-- Search -->
 
-    <!--
 
-    <div class="container">
-        <div class="inputs">
-            <div class="track-inputs">
-                <form class="form-inline d-flex justify-content-center md-form form-sm">
-                    <input id="track-input" class="form-control form-control-sm mr-1 w-75" type="text"
-                        placeholder="Search by track name, artist, genre, album..." aria-label="Search">
-                </form>
-            </div>
-        </div>
-
-        <div class="buttons">
-            <div class="buttons-track-search">
-                <form class="form-inline d-flex justify-content-center md-form form-sm">
-                    <button type="submit" id="searchTrackButton"> Search by track</button>
-
-                </form>
-            </div>
-        </div>
-        <div id="myDiv"></div>
-
-    </div>
--->
-
-    <!-- /Search -->
-    <script src="js/front.js"></script>
 
     <!--Carousel-->
 
@@ -121,13 +66,13 @@
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="d-block w-100" src="../img/Choonz.png" alt="First slide">
+                <img class="d-block w-100" src="../img/logo.png" alt="First slide">
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="../img/Choonz.png" alt="Second slide">
+                <img class="d-block w-100" src="../img/jumbotron.jpg" alt="Second slide">
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="../img/Choonz.png" alt="Third slide">
+                <img class="d-block w-100" src="../img/jumbotron2.jpg" alt="Third slide">
             </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -140,6 +85,7 @@
         </a>
     </div>
 
+    <div id="myDiv"></div>
 
 
     <!--/Carousel-->
@@ -268,12 +214,16 @@
                 </div>
 
             </div>
+            
+            <br>
+          
+
             <!--/.Second slide-->
 
             <!--/Carousel-->
 
             <!--Boostrap Script-->
-
+            <script src="js/front.js"></script>
             <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
                 integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
                 crossorigin="anonymous"></script>
@@ -286,7 +236,7 @@
 
             <!--/Boostrap Script-->
 
-
+           
 
 
 </body>
