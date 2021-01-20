@@ -16,7 +16,7 @@
     <!-- Navbar 2-->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
 
-        <img class="logo" src="../img/Choonz.png" href="./" width="auto" ml-auto height="50"></a>
+        <a href="index.html"><img class="logo" src="../img/logo.png" width="auto" ml-auto height="50"></a>
 
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
@@ -65,7 +65,7 @@
     <!--main -->
     <!--User Details-->
     
-    <div id="userDetails>">
+    <div class="userDetails">
         <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
             <div class="card-header">User</div>
             <div class="card-body">
@@ -75,12 +75,15 @@
            
         
         </div>
+
+         <!--CRUD Buttons-->
+        <button type="button" class="btn btn-outline-info">Read</button>
+        <button type="button" class="btn btn-outline-warning">Update</button>
+        <button type="button" class="btn btn-outline-danger">Delete</button>
+
     </div>
     
-    <!--CRUD Buttons-->
-    <button type="button" class="btn btn-outline-info">Read</button>
-    <button type="button" class="btn btn-outline-warning">Update</button>
-    <button type="button" class="btn btn-outline-danger">Delete</button>
+   
 
     <br><br>
 
@@ -90,72 +93,77 @@
     <!--Main Artist Display-->
     
     <div id="allArtists">
-
-
-
-        <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-            <div class="card-header">Header</div>
-            <div class="card-body">
-            <h5 class="card-title">Dark card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-        </div>
-
-     <!--Hard coded cards for demo (Delete once complete)-->
-
-      <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-        <div class="card-header">Arist</div>
-        <div class="card-body">
-          <h5 class="card-title">Guns N Roses</h5>
-          <p class="card-text"></p>
-        </div>
-      </div>
-
-      <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-        <div class="card-header">Aritst</div>
-        <div class="card-body">
-          <h5 class="card-title">Tupac</h5>
-          <p class="card-text"></p>
-        </div>
-      </div>
-
-      <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-        <div class="card-header">Artist</div>
-        <div class="card-body">
-          <h5 class="card-title">Beyonce</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-      </div>
-
-      <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-        <div class="card-header">Artist</div>
-        <div class="card-body">
-          <h5 class="card-title">Pink Floyd</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-      </div>
+        <table>
+            <tr>
+                <td>
+                    <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+                        <div class="card-header">Artist</div>
+                        <div class="card-body">
+                        <h5 class="card-title">Guns N Roses</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                    </div>
+                </td>
     
+                <td>
+                    <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+                        <div class="card-header">Artist</div>
+                        <div class="card-body">
+                        <h5 class="card-title">Biggie</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                    </div>
+                </td>
+    
+                <td>
+                    <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+                        <div class="card-header">Artist</div>
+                        <div class="card-body">
+                        <h5 class="card-title">Tupac</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                    </div>
+                </td>
+    
+                <td>
+                    <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+                        <div class="card-header">Artist</div>
+                        <div class="card-body">
+                        <h5 class="card-title">Taylor Swift</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                    </div>
+                </td>
+    
+                <td>
+                    <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+                        <div class="card-header">The Weekend</div>
+                        <div class="card-body">
+                        <h5 class="card-title">Dark card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                    </div>
+                </td>
+    
+            </tr>
+               
+    
+        </table>
+
+
+        
 
     </div>
     <!--Hard coded cards for demo (Delete once complete)-->
-    
-    <!--API Results Display-->
-    <div id="artistDisplay">
-        <div class="alert alert-dismissible alert-success">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <strong>Well done!</strong> You successfully read <a href="#" class="alert-link">this important alert message</a>.
-          </div>
-
-    </div>
     
     <!--/main -->
     <table>
         <tr>
             <td>
                 <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-                    <div class="card-header">Header 1</div>
+                    <div class="card-header">Artist</div>
                     <div class="card-body">
-                    <h5 class="card-title">Dark card title</h5>
+                    <h5 class="card-title">Eminem</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
                 </div>
@@ -163,9 +171,9 @@
 
             <td>
                 <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-                    <div class="card-header">Header 2</div>
+                    <div class="card-header">Artist</div>
                     <div class="card-body">
-                    <h5 class="card-title">Dark card title</h5>
+                    <h5 class="card-title">DaBaby</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
                 </div>
@@ -173,9 +181,9 @@
 
             <td>
                 <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-                    <div class="card-header">Header 2</div>
+                    <div class="card-header">Artist</div>
                     <div class="card-body">
-                    <h5 class="card-title">Dark card title</h5>
+                    <h5 class="card-title">Kid Rock</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
                 </div>
@@ -183,9 +191,9 @@
 
             <td>
                 <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-                    <div class="card-header">Header 2</div>
+                    <div class="card-header">Artist</div>
                     <div class="card-body">
-                    <h5 class="card-title">Dark card title</h5>
+                    <h5 class="card-title">Drake</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
                 </div>
@@ -193,9 +201,9 @@
 
             <td>
                 <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-                    <div class="card-header">Header 2</div>
+                    <div class="card-header">Artist</div>
                     <div class="card-body">
-                    <h5 class="card-title">Dark card title</h5>
+                    <h5 class="card-title">The Beatles</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
                 </div>
@@ -205,17 +213,8 @@
            
 
     </table>
-    
-    
-    
-    
-    
-   
 
-    <h1> This is the Artist Page</h1>
-
-
-
+    
 
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
