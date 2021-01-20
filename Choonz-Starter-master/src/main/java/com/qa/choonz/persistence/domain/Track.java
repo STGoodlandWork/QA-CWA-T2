@@ -44,8 +44,8 @@ public class Track {
 
 	private String lyrics;
 
-	public Track(long id, @NotNull @Size(max = 100) String title, Album album, Playlist playlist, int duration,
-			String lyrics, Genre genre, Artist artist) {
+	public Track(long id, @NotNull @Size(max = 100) String title, Artist artist, Album album, Playlist playlist,
+			int duration, String lyrics, Genre genre) {
 		super();
 		this.id = id;
 		this.title = title;
