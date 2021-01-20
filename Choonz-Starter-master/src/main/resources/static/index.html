@@ -12,34 +12,6 @@
 </head>
 
 <body>
-    <!--  Original Navbar -->
-    <!--
-    <nav class="navbar fixed-top navbar-expand-lg bg-light navbar-light">
-        <a class="navbar-brand" href="./">
-            <img class="logo" src="../img/Choonz.jpg" width="auto" ml-auto height="50"></a>
-        <button class="navbar-toggler collapsed border-0" type="button" data-toggle="collapse"
-            data-target="#collapsingNavbar">
-            <span class="navbar-toggler-icon"></span>
-            <div class="close-icon py-1">✖</div>
-        </button>
-        <div class="collapse navbar-collapse" id="collapsingNavbar">
-            <ul class="nav navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="tracks.html">Featured Tracks</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="artists.html">Artists</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="playlists.html">Top Playlists</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
--->
-
-    <!-- / Original Navbar -->
 
     <!-- Navbar 2-->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
@@ -77,43 +49,16 @@
 
             </ul>
             <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="text" id="track-input" placeholder="Search">
-                <button class="btn btn-success my-2 my-sm-0" id="searchTrackButton" type="submit">Search</button>
+                <input class="form-control mr-sm-2" type="text" id="search-input" placeholder="Search">
+                <button class="btn btn-success my-2 my-sm-0" id="searchButton" type="submit">Search</button>
             </form>
         </div>
     </nav>
 
     <!--/Navbar 2-->
 
-    <!-- Search -->
 
-    <!--
 
-    <div class="container">
-        <div class="inputs">
-            <div class="track-inputs">
-                <form class="form-inline d-flex justify-content-center md-form form-sm">
-                    <input id="track-input" class="form-control form-control-sm mr-1 w-75" type="text"
-                        placeholder="Search by track name, artist, genre, album..." aria-label="Search">
-                </form>
-            </div>
-        </div>
-
-        <div class="buttons">
-            <div class="buttons-track-search">
-                <form class="form-inline d-flex justify-content-center md-form form-sm">
-                    <button type="submit" id="searchTrackButton"> Search by track</button>
-
-                </form>
-            </div>
-        </div>
-        <div id="myDiv"></div>
-
-    </div>
--->
-
-    <!-- /Search -->
-    <script src="js/front.js"></script>
 
     <!--Carousel-->
 
@@ -144,6 +89,7 @@
         </a>
     </div>
 
+    <div id="myDiv"></div>
 
 
     <!--/Carousel-->
@@ -281,7 +227,7 @@
             <!--/Carousel-->
 
             <!--Boostrap Script-->
-
+            <script src="js/front.js"></script>
             <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
                 integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
                 crossorigin="anonymous"></script>

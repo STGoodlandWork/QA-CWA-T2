@@ -1,31 +1,31 @@
-let trackNameElement = document.getElementById("track-input");
+let trackNameElement = document.getElementById("search-input");
 let trackName = "";
 trackNameElement.addEventListener("input", (event) => {
   trackName = event.target.value;
 });
 
-let artistNameElement = document.getElementById("artist-input");
+let artistNameElement = document.getElementById("search-input");
 let artistName = "";
 artistNameElement.addEventListener("input", (event) => {
   artistName = event.target.value;
 });
 
-let playlistNameElement = document.getElementById("playlist-input");
+let playlistNameElement = document.getElementById("search-input");
 let playlistName = "";
 playlistNameElement.addEventListener("input", (event) => {
-  trackName = event.target.value;
+  playlistName = event.target.value;
 });
 
-let genreNameElement = document.getElementById("genre-input");
+let genreNameElement = document.getElementById("search-input");
 let genreName = "";
-playlistNameElement.addEventListener("input", (event) => {
-  trackName = event.target.value;
+genreNameElement.addEventListener("input", (event) => {
+  genreName = event.target.value;
 });
 
-let readAllTracksButton = document.getElementById("searchTrackButton");
-let readAllArtistsButton = document.getElementById("searchArtistButton");
-let readAllPlaylistsButton = document.getElementById("searchPlaylistButton");
-let readAllGeneresButton = document.getElementById("searchGenreButton");
+let readAllTracksButton = document.getElementById("searchButton");
+let readAllArtistsButton = document.getElementById("searchButton");
+let readAllPlaylistsButton = document.getElementById("searchButton");
+let readAllGenresButton = document.getElementById("searchButton");
 
 readAllTracksButton.onclick = async () => {
   await readAllTracks();
@@ -90,13 +90,13 @@ async function readAllArtists() {
   console.log(data);
 
   let div = document.getElementById("myDiv");
-  let tracks = [];
+  let artists = [];
 
   for (let data_i of data) {
-    let track = `Artist ID: ${data_i.id}<br>Name: ${data_i.name}<br>`;
-    tracks.push(track);
+    let artist = `Artist ID: ${data_i.id}<br>Name: ${data_i.name}<br>`;
+    artists.push(artist);
   }
-  div.innerHTML = tracks.join("");
+  div.innerHTML = artists.join("");
 }
 
 async function readAllPlaylists() {
@@ -118,13 +118,13 @@ async function readAllPlaylists() {
   console.log(data);
 
   let div = document.getElementById("myDiv");
-  let tracks = [];
+  let playlists = [];
 
   for (let data_i of data) {
-    let track = `Playlist ID: ${data_i.id}<br>Name: ${data_i.name}<br>`;
-    tracks.push(track);
+    let playlist = `Playlist ID: ${data_i.id}<br>Name: ${data_i.name}<br>`;
+    playlists.push(playlist);
   }
-  div.innerHTML = tracks.join("");
+  div.innerHTML = playlists.join("");
 }
 
 async function readAllGenres() {
@@ -146,18 +146,11 @@ async function readAllGenres() {
   console.log(data);
 
   let div = document.getElementById("myDiv");
-  let tracks = [];
+  let genres = [];
 
   for (let data_i of data) {
-    let track = `Genre ID: ${data_i.id}<br>Name: ${data_i.name}<br>`;
-    tracks.push(track);
+    let genre = `Genre ID: ${data_i.id}<br>Name: ${data_i.name}<br>`;
+    genres.push(genre);
   }
-  div.innerHTML = tracks.join("");
+  div.innerHTML = genres.join("");
 }
-
-$(function () {
-  $("#ChangeToggle").click(function () {
-    $("#navbar-hamburger").toggleClass("hidden");
-    $("#navbar-close").toggleClass("hidden");
-  });
-});

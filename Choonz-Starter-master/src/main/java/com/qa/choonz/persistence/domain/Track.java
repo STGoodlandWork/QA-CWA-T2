@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -24,7 +25,13 @@ public class Track {
 	@NotNull
 	@Size(max = 100)
 	@Column(unique = true)
-	private String name;
+	private String title;
+
+	@OneToOne
+	private Artist artist;
+
+	@OneToOne
+	private Genre genre;
 
 	@ManyToOne
 	private Album album;
@@ -37,15 +44,17 @@ public class Track {
 
 	private String lyrics;
 
-	public Track(long id, @NotNull @Size(max = 100) String name, Album album, Playlist playlist, int duration,
-			String lyrics) {
+	public Track(long id, @NotNull @Size(max = 100) String title, Album album, Playlist playlist, int duration,
+			String lyrics, Genre genre, Artist artist) {
 		super();
 		this.id = id;
-		this.name = name;
+		this.title = title;
 		this.album = album;
 		this.playlist = playlist;
 		this.duration = duration;
 		this.lyrics = lyrics;
+		this.artist = artist;
+		this.genre = genre;
 	}
 
 }
