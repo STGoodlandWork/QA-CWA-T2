@@ -17,45 +17,46 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import com.qa.choonz.persistence.domain.Artist;
-import com.qa.choonz.rest.controller.ArtistController;
-import com.qa.choonz.rest.dto.ArtistDTO;
-import com.qa.choonz.service.ArtistService;
+import com.qa.choonz.persistence.domain.Track;
+import com.qa.choonz.rest.controller.TrackController;
+import com.qa.choonz.rest.dto.TrackDTO;
+import com.qa.choonz.service.TrackService;
 
 @SpringBootTest
-public class ArtistControllerTest {
+public class TrackControllerTest {
 
 	@Autowired
-	private ArtistController controller;
+	private TrackController controller;
 
 	@MockBean
-	private ArtistService service;
+	private TrackService service;
 
 	@Autowired
 	private ModelMapper mapper;
 
-	private ArtistDTO mapToDTO(Artist artist) {
-		return this.mapper.map(artist, ArtistDTO.class);
+	private TrackDTO mapToDTO(Track track) {
+		return this.mapper.map(track, TrackDTO.class);
 	}
 
-	private final Artist TEST_1 = new Artist(1l, "The Weeknd", null);
-	private final Artist TEST_2 = new Artist(2l, "Daniel Caesar", null);
-	private final Artist TEST_3 = new Artist(3l, "SZA", null);
-	private final Artist TEST_4 = new Artist(4l, "Brent Faiyaz", null);
-	private final Artist TEST_5 = new Artist(5l, "Brent Faiyaz", null);
+	private final Track TEST_1 = new Track(1l, "Good Days", null, null, null, 120, "Laurem Epsom", null);
+	private final Track TEST_2 = new Track(2l, "We Hate Git", null, null, null, 120, "Laurem Epsom", null);
+	private final Track TEST_3 = new Track(3l, "Git GUI's FTW", null, null, null, 120, "Laurem Epsom", null);
+	private final Track TEST_4 = new Track(4l, "git push -f saved my life", null, null, null, 120, "Laurem Epsom",
+			null);
+	private final Track TEST_5 = new Track(5l, "Great Days", null, null, null, 120, "Laurem Epsom", null);
 
-	private List<Artist> LISTOFARTIST;
+	private List<Track> LISTOFTRACKS;
 
 	@BeforeEach
 	void init() {
-		LISTOFARTIST = List.of(TEST_1, TEST_2, TEST_3, TEST_4, TEST_5);
+		LISTOFTRACKS = List.of(TEST_1, TEST_2, TEST_3, TEST_4, TEST_5);
 	}
 
 	// Create
 	@Test
 	void createTest() throws Exception {
 		when(this.service.create(TEST_1)).thenReturn(this.mapToDTO(TEST_1));
-		assertThat(new ResponseEntity<ArtistDTO>(this.mapToDTO(TEST_1), HttpStatus.CREATED))
+		assertThat(new ResponseEntity<TrackDTO>(this.mapToDTO(TEST_1), HttpStatus.CREATED))
 				.isEqualTo(this.controller.create(TEST_1));
 		verify(this.service, atLeastOnce()).create(TEST_1);
 	}
@@ -63,7 +64,7 @@ public class ArtistControllerTest {
 	// Read All
 	@Test
 	void readAllTest() throws Exception {
-		List<ArtistDTO> dtos = LISTOFARTIST.stream().map(this::mapToDTO).collect(Collectors.toList());
+		List<TrackDTO> dtos = LISTOFTRACKS.stream().map(this::mapToDTO).collect(Collectors.toList());
 		when(this.service.read()).thenReturn(dtos);
 		assertThat(this.controller.read()).isEqualTo(new ResponseEntity<>(dtos, HttpStatus.OK));
 	}
@@ -72,7 +73,7 @@ public class ArtistControllerTest {
 	@Test
 	void readByIDTest() throws Exception {
 		when(this.service.read(TEST_3.getId())).thenReturn(this.mapToDTO(TEST_3));
-		assertThat(new ResponseEntity<ArtistDTO>(this.mapToDTO(TEST_3), HttpStatus.OK))
+		assertThat(new ResponseEntity<TrackDTO>(this.mapToDTO(TEST_3), HttpStatus.OK))
 				.isEqualTo(this.controller.read(TEST_3.getId()));
 		verify(this.service, atLeastOnce()).read(TEST_3.getId());
 	}
@@ -81,7 +82,7 @@ public class ArtistControllerTest {
 	@Test
 	void updateTest() throws Exception {
 		when(this.service.update(TEST_2, TEST_2.getId())).thenReturn(this.mapToDTO(TEST_2));
-		assertThat(new ResponseEntity<ArtistDTO>(this.mapToDTO(TEST_2), HttpStatus.ACCEPTED))
+		assertThat(new ResponseEntity<TrackDTO>(this.mapToDTO(TEST_2), HttpStatus.ACCEPTED))
 				.isEqualTo(this.controller.update(TEST_2, TEST_2.getId()));
 	}
 
@@ -89,7 +90,7 @@ public class ArtistControllerTest {
 	@Test
 	void deleteTest() throws Exception {
 		when(this.service.delete(TEST_4.getId())).thenReturn(true);
-		assertThat(new ResponseEntity<ArtistDTO>(HttpStatus.NO_CONTENT))
+		assertThat(new ResponseEntity<TrackDTO>(HttpStatus.NO_CONTENT))
 				.isEqualTo(this.controller.delete(TEST_4.getId()));
 	}
 
@@ -97,16 +98,16 @@ public class ArtistControllerTest {
 	@Test
 	void deleteTestNoEmployee() throws Exception {
 		when(this.service.delete(7l)).thenReturn(false);
-		assertThat(new ResponseEntity<ArtistDTO>(HttpStatus.INTERNAL_SERVER_ERROR))
+		assertThat(new ResponseEntity<TrackDTO>(HttpStatus.INTERNAL_SERVER_ERROR))
 				.isEqualTo(this.controller.delete(7l));
 	}
 
 	// Search Test
 	@Test
 	void deleteSearchTest() throws Exception {
-		String query = "The Weeknd";
+		String query = "Good Days";
 		when(this.service.search(query)).thenReturn(List.of(mapToDTO(TEST_1)));
-		assertThat(new ResponseEntity<List<ArtistDTO>>(this.service.search(query), HttpStatus.OK))
+		assertThat(new ResponseEntity<List<TrackDTO>>(this.service.search(query), HttpStatus.OK))
 				.isEqualTo(this.controller.search(query));
 	}
 }
