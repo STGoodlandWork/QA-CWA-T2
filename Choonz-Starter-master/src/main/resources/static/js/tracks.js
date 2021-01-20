@@ -1,10 +1,10 @@
-let searchElement = document.getElementById("track-input");
-let search = "";
-searchElement.addEventListener("input", (event) => {
-  search = event.target.value;
+let trackNameElement = document.getElementById("track-input");
+let trackName = "";
+trackNameElement.addEventListener("input", (event) => {
+  trackName = event.target.value;
 });
 
-let searchAllFieldsButton = document.getElementById("searchButton");
+let searchAllFieldsButton = document.getElementById("searchTrackButton");
 
 searchAllFieldsButton.onclick = async () => {
   await searchAll();
@@ -35,5 +35,6 @@ async function searchAll() {
     let track = `Track ID: ${data_i.id}<br>Name: ${data_i.name}<br>`;
     tracks.push(track);
   }
+  console.log(track);
   div.innerHTML = tracks.join("");
 }
