@@ -12,6 +12,8 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -40,6 +42,7 @@ public class Playlist {
 	private String artwork;
 
 	@OneToMany(mappedBy = "playlist", cascade = CascadeType.ALL)
+	@JsonIgnore
 	private List<Track> tracks;
 
 	public Playlist(long id, @NotNull @Size(max = 100) String name, @NotNull @Size(max = 500) String description,
