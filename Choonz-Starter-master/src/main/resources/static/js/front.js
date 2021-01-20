@@ -90,13 +90,13 @@ async function readAllArtists() {
   console.log(data);
 
   let div = document.getElementById("myDiv");
-  let tracks = [];
+  let artists = [];
 
   for (let data_i of data) {
-    let track = `Artist ID: ${data_i.id}<br>Name: ${data_i.name}<br>`;
-    tracks.push(track);
+    let artist = `Artist ID: ${data_i.id}<br>Name: ${data_i.name}<br>`;
+    artists.push(artist);
   }
-  div.innerHTML = tracks.join("");
+  div.innerHTML = artists.join("");
 }
 
 async function readAllPlaylists() {
@@ -118,13 +118,13 @@ async function readAllPlaylists() {
   console.log(data);
 
   let div = document.getElementById("myDiv");
-  let tracks = [];
+  let playlists = [];
 
   for (let data_i of data) {
-    let track = `Playlist ID: ${data_i.id}<br>Name: ${data_i.name}<br>`;
-    tracks.push(track);
+    let playlist = `Playlist ID: ${data_i.id}<br>Name: ${data_i.name}<br>`;
+    playlists.push(playlist);
   }
-  div.innerHTML = tracks.join("");
+  div.innerHTML = playlists.join("");
 }
 
 async function readAllGenres() {
@@ -146,11 +146,11 @@ async function readAllGenres() {
   console.log(data);
 
   let div = document.getElementById("myDiv");
-  let tracks = [];
+  let genres = [];
 
   for (let data_i of data) {
-    let track = `Genre ID: ${data_i.id}<br>Name: ${data_i.name}<br>`;
-    tracks.push(track);
+    let genre = `Genre ID: ${data_i.id}<br>Name: ${data_i.name}<br>`;
+    genres.push(genre);
   }
-  div.innerHTML = tracks.join("");
+  div.innerHTML = genres.join("");
 }
