@@ -35,6 +35,5 @@ async function searchAllTracks() {
     let track = `Track ID: ${data_i.id}<br>Name: ${data_i.name}<br>`;
     tracks.push(track);
   }
-  console.log(track);
   div.innerHTML = tracks.join("");
 }
