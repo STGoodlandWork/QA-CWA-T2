@@ -71,12 +71,14 @@ public class AlbumServiceTest {
 
 	@Test
 	void updateTest() throws Exception {
-
-		AlbumDTO expectedDTO = mapToDTO(test_album);
+		Album updatedAlbum = test_album;
+		updatedAlbum.setName("Oww it hurts, heal me");
+		AlbumDTO expectedDTO = mapToDTO(updatedAlbum);
 		when(repo.findById(test_album.getId())).thenReturn(Optional.of(test_album));
-		when(repo.save(test_album)).thenReturn(test_album);
-		assertThat(service.update(test_album, test_album.getId())).isEqualTo(expectedDTO);
+		when(repo.save(updatedAlbum)).thenReturn(updatedAlbum);
+		assertThat(service.update(mapToDTO(test_album), test_album.getId())).isEqualTo(expectedDTO);
 		verify(repo, atLeastOnce()).findById(test_album.getId());
+		verify(repo, atLeastOnce()).save(updatedAlbum);
 
 	}
 

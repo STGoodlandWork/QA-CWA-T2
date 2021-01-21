@@ -104,14 +104,14 @@ public class AlbumIntegrationTest {
 	@Test
 	void updateTest() throws Exception {
 		List<Track> track = null;
-		AlbumDTO testDTO = mapToDTO(new Album("In League With Dragons", track, null, null, null));
+		AlbumDTO testDTO = mapToDTO(new Album("In League With Snails", track, null, null, null));
 		String testDTOAsJSON = jsonifier.writeValueAsString(testDTO);
 
 		RequestBuilder request = put(URI + "update/" + TEST_3.getId()).contentType(MediaType.APPLICATION_JSON)
 				.content(testDTOAsJSON);
 		ResultMatcher checkStatus = status().isAccepted();
 
-		AlbumDTO testSavedDTO = mapToDTO(new Album(3l, "In League With Dragons"));
+		AlbumDTO testSavedDTO = mapToDTO(new Album(3l, "In League With Snails"));
 
 		ResultMatcher checkBody = jsonPath("name").value(testSavedDTO.getName());
 

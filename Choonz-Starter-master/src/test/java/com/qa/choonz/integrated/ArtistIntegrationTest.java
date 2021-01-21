@@ -95,14 +95,14 @@ public class ArtistIntegrationTest {
 
 	@Test
 	void updateTest() throws Exception {
-		ArtistDTO testDTO = mapToDTO(TEST_3);
+		ArtistDTO testDTO = mapToDTO(new Artist("WILLOW"));
 		String testDTOAsJSON = jsonifier.writeValueAsString(testDTO);
 
 		RequestBuilder request = put(URI + "update/" + TEST_3.getId()).contentType(MediaType.APPLICATION_JSON)
 				.content(testDTOAsJSON);
 		ResultMatcher checkStatus = status().isAccepted();
 
-		ArtistDTO testSavedDTO = mapToDTO(TEST_3);
+		ArtistDTO testSavedDTO = mapToDTO(new Artist(3l, "WILLOW"));
 
 		ResultMatcher checkBody = jsonPath("name").value(testSavedDTO.getName());
 
