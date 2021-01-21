@@ -14,14 +14,18 @@ createPlaylistButton.onclick = async () => {
 readAllPlaylistsButton.onclick = async () => {
   await readPlaylist(playlistName);
 };
-
+console.log("Hello rato 1");
 async function createPlaylist(playlistName) {
+  console.log("Hello rato 2");
+
   let response = await fetch(`http://localhost:8082/playlist/create`, {
     method: "POST",
     headers: {
       "Content-type": "application/json ",
     },
-    body: JSON.stringify({ name: playlistName }),
+    body: JSON.stringify({
+      name: playlistName,
+    }),
   });
 
   if (!response.ok) {
@@ -32,7 +36,7 @@ async function createPlaylist(playlistName) {
   }
 
   let div = document.getElementById("myDiv");
-  div.innerText = `New playlist has been added!`;
+  //div.innerText = `New playlist has been added!`;
 }
 
 async function readPlaylist(playlistName) {

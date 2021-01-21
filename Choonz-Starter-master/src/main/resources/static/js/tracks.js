@@ -33,7 +33,7 @@ async function createTrack(trackName) {
     return;
   }
   let div = document.getElementById("myDiv");
-  div.innerText = `New task has been added!`;
+  //div.innerText = `New task has been added!`;
 }
 
 async function searchTrack(trackName) {
