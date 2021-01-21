@@ -48,7 +48,7 @@ public class TrackService {
 	}
 
 	// Update
-	public TrackDTO update(Track track, long id) {
+	public TrackDTO update(TrackDTO track, long id) {
 		Track toUpdate = this.repo.findById(id).orElseThrow(TrackNotFoundException::new);
 		toUpdate.setTitle(track.getTitle());
 		toUpdate.setArtist(track.getArtist());

@@ -42,13 +42,13 @@ public class AlbumService {
 		return this.mapToDTO(found);
 	}
 
-	public AlbumDTO update(AlbumDTO aDTO, long id) {
+	public AlbumDTO update(AlbumDTO album, long id) {
 		Album toUpdate = this.repo.findById(id).orElseThrow(AlbumNotFoundException::new);
-		toUpdate.setName(aDTO.getName());
-		toUpdate.setArtist(aDTO.getArtist());
-		toUpdate.setCover(aDTO.getCover());
+		toUpdate.setName(album.getName());
+		toUpdate.setArtist(album.getArtist());
+		toUpdate.setCover(album.getCover());
 		Album updated = this.repo.save(toUpdate);
-		SpringBeanUtil.mergeNotNull(aDTO, toUpdate);
+		SpringBeanUtil.mergeNotNull(album, toUpdate);
 		return this.mapToDTO(updated);
 	}
 
