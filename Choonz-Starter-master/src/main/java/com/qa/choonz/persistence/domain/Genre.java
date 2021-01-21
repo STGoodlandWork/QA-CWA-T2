@@ -40,7 +40,7 @@ public class Genre {
 	@JsonIgnore
 	private List<Album> albums;
 
-	public Genre(long id, @NotNull @Size(max = 100) String name, @NotNull @Size(max = 250) String description,
+	public Genre(Long id, @NotNull @Size(max = 100) String name, @NotNull @Size(max = 250) String description,
 			List<Album> albums) {
 		super();
 		this.id = id;
@@ -49,4 +49,22 @@ public class Genre {
 		this.albums = albums;
 	}
 
+	public Genre(@NotNull @Size(max = 100) String name, @NotNull @Size(max = 250) String description,
+			List<Album> albums) {
+		super();
+		this.name = name;
+		this.description = description;
+		this.albums = albums;
+	}
+
+	public Genre(@NotNull @Size(max = 100) String name) {
+		super();
+		this.name = name;
+	}
+
+	public Genre(Long id, @NotNull @Size(max = 100) String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
 }
