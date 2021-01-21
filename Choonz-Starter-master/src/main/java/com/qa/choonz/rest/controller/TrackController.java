@@ -48,7 +48,7 @@ public class TrackController {
 	}
 
 	@PutMapping("/update/{id}")
-	public ResponseEntity<TrackDTO> update(@RequestBody Track track, @PathVariable long id) {
+	public ResponseEntity<TrackDTO> update(@RequestBody TrackDTO track, @PathVariable long id) {
 		return new ResponseEntity<TrackDTO>(this.service.update(track, id), HttpStatus.ACCEPTED);
 	}
 
@@ -57,8 +57,9 @@ public class TrackController {
 		return this.service.delete(id) ? new ResponseEntity<TrackDTO>(HttpStatus.NO_CONTENT)
 				: new ResponseEntity<TrackDTO>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
+
 	@GetMapping("/search/{query}")
-    public ResponseEntity<List<TrackDTO>> search(@PathVariable String query) {
-        return new ResponseEntity<List<TrackDTO>>(this.service.search(query), HttpStatus.OK);
-    }
+	public ResponseEntity<List<TrackDTO>> search(@PathVariable String query) {
+		return new ResponseEntity<List<TrackDTO>>(this.service.search(query), HttpStatus.OK);
+	}
 }
