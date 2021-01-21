@@ -11,7 +11,7 @@ readAllArtistsButton.onclick = async () => {
 };
 
 async function readAllArtists() {
-  let response = await fetch(`http://localhost:8082/artists/search`, {
+  let response = await fetch(`http://localhost:8082/artist/read`, {
     method: "GET",
     headers: {
       "Content-type": "application/json ",
