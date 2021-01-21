@@ -1,22 +1,50 @@
 let playlistNameElement = document.getElementById("playlist-input");
 let playlistName = "";
 playlistNameElement.addEventListener("input", (event) => {
-  trackName = event.target.value;
+  playlistName = event.target.value;
 });
 
+let createPlaylistButton = document.getElementById("createPlaylistButton");
 let readAllPlaylistsButton = document.getElementById("searchPlaylistButton");
 
-readAllPlaylistsButton.onclick = async () => {
-  await readAllPlaylists();
+createPlaylistButton.onclick = async () => {
+  await createPlaylist();
 };
 
-async function readAllPlaylists() {
-  let response = await fetch(`http://localhost:8082/playlists/search`, {
-    method: "GET",
+readAllPlaylistsButton.onclick = async () => {
+  await readPlaylist();
+};
+
+async function createPlaylist(playlistName) {
+  let response = await fetch(`http://localhost:9092/playlist/create`, {
+    method: "POST",
     headers: {
       "Content-type": "application/json ",
     },
+    body: JSON.stringify({ name: playlistName }),
   });
+
+  if (!response.ok) {
+    console.log(
+      `Looks like there was a problem. Status Code: ${response.status}`
+    );
+    return;
+  }
+
+  let div = document.getElementById("myDiv");
+  div.innerText = `New playlist has been added!`;
+}
+
+async function readPlaylist(playlistName) {
+  let response = await fetch(
+    `http://localhost:8082/playlist/search/${playlistName}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json ",
+      },
+    }
+  );
 
   if (!response.ok) {
     console.log(
@@ -29,11 +57,15 @@ async function readAllPlaylists() {
   console.log(data);
 
   let div = document.getElementById("myDiv");
+  let playlistResult = `Playlist: ${data.name} <br>`;
   let tracks = [];
 
-  for (let data_i of data) {
-    let track = `Playlist ID: ${data_i.id}<br>Name: ${data_i.name}<br>`;
-    tracks.push(track);
+  for (let track of data.tracks) {
+    tracks.push(`(${track.id}: ${track.name})`);
   }
-  div.innerHTML = tracks.join("");
+
+  tracks = "Tracks: " + tracks.join(", ") + "<br><br>";
+
+  let listItem = `${playlistResult}${tracks}`;
+  div.innerHTML = listItem;
 }

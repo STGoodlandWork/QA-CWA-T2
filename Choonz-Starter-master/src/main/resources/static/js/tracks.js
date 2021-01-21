@@ -4,19 +4,52 @@ trackNameElement.addEventListener("input", (event) => {
   trackName = event.target.value;
 });
 
-let searchAllFieldsButton = document.getElementById("searchTrackButton");
+let createTrackButton = document.getElementById("createTrackButton");
+let searchAllTracksButton = document.getElementById("searchTrackButton");
 
-searchAllFieldsButton.onclick = async () => {
-  await searchAllTracks();
+createTrackButton.onclick = async () => {
+  await createTrack(playlistId, trackName);
 };
 
-async function searchAllTracks() {
-  let response = await fetch(`http://localhost:8082/tracks/search`, {
-    method: "GET",
+searchAllTracksButton.onclick = async () => {
+  await searchTrack();
+};
+
+async function createTrack(playlistId, trackName) {
+  let playlistIdInt = parseInt(playlistId);
+  let response = await fetch(`http://localhost:8082/track/create`, {
+    method: "POST",
     headers: {
       "Content-type": "application/json ",
     },
+    body: JSON.stringify({
+      title: trackName,
+      playlist: {
+        id: playlistIdInt,
+      },
+    }),
   });
+
+  if (!response.ok) {
+    console.log(
+      `Looks like there was a problem. Status Code: ${response.status}`
+    );
+    return;
+  }
+  let div = document.getElementById("myDiv");
+  div.innerText = `New task has been added!`;
+}
+
+async function searchTrack() {
+  let response = await fetch(
+    `http://localhost:8082/track/search/${trackName}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json ",
+      },
+    }
+  );
 
   if (!response.ok) {
     console.log(

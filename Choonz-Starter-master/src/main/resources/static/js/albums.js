@@ -4,22 +4,25 @@ albumNameElement.addEventListener("input", (event) => {
   albumName = event.target.value;
 });
 
-let readAllAlbumsButton = document.getElementById("searchAlbumButton");
+let readAlbumButton = document.getElementById("searchAlbumButton");
 
-readAllAlbumsButton.onclick = async () => {
-  await readAllAlbums();
+readAlbumButton.onclick = async () => {
+  await readAlbum(albumName);
 };
 
-async function readAllAlbums() {
-  let response = await fetch(`http://localhost:8082/albums/search`, {
-    method: "GET",
-    headers: {
-      "Content-type": "application/json ",
-    },
-  });
+async function readAlbum(albumName) {
+  let response = await fetch(
+    `http://localhost:8082/album/search/${albumName}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json ",
+      },
+    }
+  );
 
   if (!response.ok) {
-    console.log(
+    console.error(
       `Looks like there was a problem. Status Code: ${response.status}`
     );
     return;
@@ -29,11 +32,12 @@ async function readAllAlbums() {
   console.log(data);
 
   let div = document.getElementById("myDiv");
-  let tracks = [];
+  let albumResult = `Album: ${data.name} <br>`;
+  let albums = [];
 
   for (let data_i of data) {
-    let track = `Album ID: ${data_i.id}<br>Name: ${data_i.name}<br>`;
-    tracks.push(track);
+    let album = `Album: ${data_i}<br>`;
+    albums.push(album);
   }
-  div.innerHTML = tracks.join("");
+  console.log(albums);
 }
