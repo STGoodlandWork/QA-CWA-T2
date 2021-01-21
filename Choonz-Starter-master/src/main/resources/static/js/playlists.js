@@ -8,20 +8,24 @@ let createPlaylistButton = document.getElementById("createPlaylistButton");
 let readAllPlaylistsButton = document.getElementById("searchPlaylistButton");
 
 createPlaylistButton.onclick = async () => {
-  await createPlaylist();
+  await createPlaylist(playlistName);
 };
 
 readAllPlaylistsButton.onclick = async () => {
-  await readPlaylist();
+  await readPlaylist(playlistName);
 };
-
+console.log("Hello rato 1");
 async function createPlaylist(playlistName) {
-  let response = await fetch(`http://localhost:9092/playlist/create`, {
+  console.log("Hello rato 2");
+
+  let response = await fetch(`http://localhost:8082/playlist/create`, {
     method: "POST",
     headers: {
       "Content-type": "application/json ",
     },
-    body: JSON.stringify({ name: playlistName }),
+    body: JSON.stringify({
+      name: playlistName,
+    }),
   });
 
   if (!response.ok) {
@@ -32,7 +36,7 @@ async function createPlaylist(playlistName) {
   }
 
   let div = document.getElementById("myDiv");
-  div.innerText = `New playlist has been added!`;
+  //div.innerText = `New playlist has been added!`;
 }
 
 async function readPlaylist(playlistName) {
@@ -56,6 +60,7 @@ async function readPlaylist(playlistName) {
   let data = await response.json();
   console.log(data);
 
+  /*
   let div = document.getElementById("myDiv");
   let playlistResult = `Playlist: ${data.name} <br>`;
   let tracks = [];
@@ -68,6 +73,7 @@ async function readPlaylist(playlistName) {
 
   let listItem = `${playlistResult}${tracks}`;
   div.innerHTML = listItem;
+  */
 }
 
 
