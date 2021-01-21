@@ -11,6 +11,7 @@ import com.qa.choonz.exception.TrackNotFoundException;
 import com.qa.choonz.persistence.domain.Track;
 import com.qa.choonz.persistence.repository.TrackRepository;
 import com.qa.choonz.rest.dto.TrackDTO;
+import com.qa.choonz.util.SpringBeanUtil;
 
 @Service
 public class TrackService {
@@ -56,6 +57,7 @@ public class TrackService {
 		toUpdate.setDuration(track.getDuration());
 		toUpdate.setLyrics(track.getLyrics());
 		toUpdate.setPlaylist(track.getPlaylist());
+		SpringBeanUtil.mergeNotNull(track, toUpdate);
 		Track updated = this.repo.save(toUpdate);
 		return this.mapToDTO(updated);
 	}
