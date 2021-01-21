@@ -1,6 +1,7 @@
 
 
 var album = sessionStorage.getItem("name");
+var albumid
 getData(album)
 
 function getData(id){
@@ -14,12 +15,14 @@ function getData(id){
           }
           // Examine the text in the response
           response.json().then(function(data) {
-             console.log("MY DATA OBJ",data)
+             
+            console.log("MY DATA OBJ",data)
 
-             document.querySelector("input#name").value = data.name
-             document.querySelector("input#artist").value = data.id
-             document.querySelector("input#genre").value = data.genre
-             document.querySelector("input#img").value = data.cover
+             document.querySelector("input#name").value = data[0].name
+             document.querySelector("input#artist").value = data[0].artist.id
+             document.querySelector("input#genre").value = data[0].genre.id
+             document.querySelector("input#img").value = data[0].cover
+             albumid = data[0].id
              
              
     
@@ -36,6 +39,7 @@ function getData(id){
     stop.preventDefault();
     let formElements = document.querySelector("form.viewRecord").elements;
     console.log(formElements)
+    
     
     let name=formElements["name"].value;
     let artist =formElements["artist"].value;
@@ -55,17 +59,17 @@ function getData(id){
     }
       
       
-    
+    id = albumid
     console.log("Data to post",data)
-    console.log(id)
+    console.log(albumid)
 
-    sendData(data,id)
+    sendData(data,albumid)
     // postData(noteTitle,noteBody)
   });
 
 
   function sendData(data,id){
-    fetch("http://localhost:8082/task/update/"+id, {
+    fetch("http://localhost:8082/album/update/"+id, {
         method: 'put',
         headers: {
           "Content-type": "application/json; charset=UTF-8"
