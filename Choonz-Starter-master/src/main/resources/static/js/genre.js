@@ -1,22 +1,25 @@
 let genreNameElement = document.getElementById("genre-input");
 let genreName = "";
 playlistNameElement.addEventListener("input", (event) => {
-  trackName = event.target.value;
+  genreName = event.target.value;
 });
 
 let readAllGeneresButton = document.getElementById("searchGenreButton");
 
 readAllGenresButton.onclick = async () => {
-  await readAllGenres();
+  await readAllGenres(genreName);
 };
 
-async function readAllGenres() {
-  let response = await fetch(`http://localhost:8082/genre/search`, {
-    method: "GET",
-    headers: {
-      "Content-type": "application/json ",
-    },
-  });
+async function readAllGenres(genreName) {
+  let response = await fetch(
+    `http://localhost:8082/genre/search/${genreName}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json ",
+      },
+    }
+  );
 
   if (!response.ok) {
     console.log(
@@ -29,11 +32,12 @@ async function readAllGenres() {
   console.log(data);
 
   let div = document.getElementById("myDiv");
-  let tracks = [];
+  let genreResult = `Genre: ${data.name} <br>`;
+  let genres = [];
 
   for (let data_i of data) {
-    let track = `Genre ID: ${data_i.id}<br>Name: ${data_i.name}<br>`;
-    tracks.push(track);
+    let genre = `Genre: ${data_i}<br>`;
+    genres.push(genre);
   }
-  div.innerHTML = tracks.join("");
+  console.log(genres);
 }

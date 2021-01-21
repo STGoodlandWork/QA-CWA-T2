@@ -32,12 +32,12 @@ async function readAlbum(albumName) {
   console.log(data);
 
   let div = document.getElementById("myDiv");
-  let albumName = `Album: ${data.name} <br>`;
+  let albumResult = `Album: ${data.name} <br>`;
   let albums = [];
 
   for (let data_i of data) {
     let album = `Album: ${data_i}<br>`;
     albums.push(album);
   }
-  div.innerHTML = albums.join("");
+  console.log(albums);
 }
