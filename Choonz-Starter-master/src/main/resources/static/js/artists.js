@@ -7,16 +7,21 @@ artistNameElement.addEventListener("input", (event) => {
 let readAllArtistsButton = document.getElementById("searchArtistButton");
 
 readAllArtistsButton.onclick = async () => {
-  await readAllArtists();
+  await readAllArtists(artistName);
 };
 
-async function readAllArtists() {
-  let response = await fetch(`http://localhost:8082/artists/search`, {
-    method: "GET",
-    headers: {
-      "Content-type": "application/json ",
-    },
-  });
+console.log("Before async");
+async function readAllArtists(artistName) {
+  console.log("After async");
+  let response = await fetch(
+    `http://localhost:8082/artist/read/${artistName}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json ",
+      },
+    }
+  );
 
   if (!response.ok) {
     console.log(
@@ -29,11 +34,10 @@ async function readAllArtists() {
   console.log(data);
 
   let div = document.getElementById("myDiv");
-  let tracks = [];
+  let artists = [];
 
   for (let data_i of data) {
-    let track = `Artist ID: ${data_i.id}<br>Name: ${data_i.name}<br>`;
-    tracks.push(track);
+    let artist = `Artist ID: ${data_i}<br>`;
+    artists.push(artist);
   }
-  div.innerHTML = tracks.join("");
 }

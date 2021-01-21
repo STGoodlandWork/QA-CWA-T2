@@ -7,12 +7,41 @@ trackNameElement.addEventListener("input", (event) => {
 let createTrackButton = document.getElementById("createTrackButton");
 let searchAllTracksButton = document.getElementById("searchTrackButton");
 
+createTrackButton.onclick = async () => {
+  await createTrack(playlistId, trackName);
+};
+
 searchAllTracksButton.onclick = async () => {
   await searchAllTracks();
 };
 
+async function createTrack(playlistId, trackName) {
+  let playlistIdInt = parseInt(playlistId);
+  let response = await fetch(`http://localhost:8082/track/create`, {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json ",
+    },
+    body: JSON.stringify({
+      title: trackName,
+      playlist: {
+        id: playlistIdInt,
+      },
+    }),
+  });
+
+  if (!response.ok) {
+    console.log(
+      `Looks like there was a problem. Status Code: ${response.status}`
+    );
+    return;
+  }
+  let div = document.getElementById("myDiv");
+  div.innerText = `New task has been added!`;
+}
+
 async function searchAllTracks() {
-  let response = await fetch(`http://localhost:8082/tracks/search`, {
+  let response = await fetch(`http://localhost:8082/track/search`, {
     method: "GET",
     headers: {
       "Content-type": "application/json ",
