@@ -23,7 +23,7 @@ document
       },
       "cover":img
     }
-      
+sessionStorage.setItem("name",name)      
 console.log("Data to post",data)
 sendData(data)
 
@@ -32,7 +32,7 @@ sendData(data)
 
 
 function sendData(data){
-fetch("http://localhost:9092/album/create", {
+fetch("http://localhost:8082/album/create", {
     method: 'post',
     headers: {
       "Content-type": "application/json; charset=UTF-8"
