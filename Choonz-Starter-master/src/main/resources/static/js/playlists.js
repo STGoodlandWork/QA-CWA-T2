@@ -60,20 +60,13 @@ async function readPlaylist(playlistName) {
   let data = await response.json();
   console.log(data);
 
-  /*
-  let div = document.getElementById("myDiv");
-  let playlistResult = `Playlist: ${data.name} <br>`;
-  let tracks = [];
+  data.forEach((playlist) => {
+        
+    console.log(playlist.name);
+    createCard(playlist);
+  });
 
-  for (let track of data.tracks) {
-    tracks.push(`(${track.id}: ${track.name})`);
-  }
-
-  tracks = "Tracks: " + tracks.join(", ") + "<br><br>";
-
-  let listItem = `${playlistResult}${tracks}`;
-  div.innerHTML = listItem;
-  */
+  
 }
 
 
