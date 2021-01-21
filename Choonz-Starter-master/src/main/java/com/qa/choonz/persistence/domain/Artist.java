@@ -46,4 +46,15 @@ public class Artist {
 		this.albums = albums;
 	}
 
+	public Artist(@NotNull @Size(max = 100) String name) {
+		super();
+		this.name = name;
+	}
+
+	public Artist(long id, @NotNull @Size(max = 100) String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
+
 }
