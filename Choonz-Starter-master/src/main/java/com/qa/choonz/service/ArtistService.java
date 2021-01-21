@@ -11,6 +11,7 @@ import com.qa.choonz.exception.ArtistNotFoundException;
 import com.qa.choonz.persistence.domain.Artist;
 import com.qa.choonz.persistence.repository.ArtistRepository;
 import com.qa.choonz.rest.dto.ArtistDTO;
+import com.qa.choonz.util.SpringBeanUtil;
 
 @Service
 public class ArtistService {
@@ -46,10 +47,10 @@ public class ArtistService {
 	}
 
 	// Update
-	public ArtistDTO update(Artist artist, long id) {
+	public ArtistDTO update(ArtistDTO aDTO, long id) {
 		Artist toUpdate = this.repo.findById(id).orElseThrow(ArtistNotFoundException::new);
-		toUpdate.setName(artist.getName());
-		toUpdate.setAlbums(artist.getAlbums());
+		toUpdate.setName(aDTO.getName());
+		SpringBeanUtil.mergeNotNull(aDTO, toUpdate);
 		return this.mapToDTO(this.repo.save(toUpdate));
 	}
 
@@ -58,10 +59,9 @@ public class ArtistService {
 		this.repo.deleteById(id);
 		return !this.repo.existsById(id);
 	}
-	
+
 	public List<ArtistDTO> search(String query) {
-    	return this.repo.search(query).stream().map(this::mapToDTO).collect(Collectors.toList());
-    }
-	
-	
+		return this.repo.search(query).stream().map(this::mapToDTO).collect(Collectors.toList());
+	}
+
 }
