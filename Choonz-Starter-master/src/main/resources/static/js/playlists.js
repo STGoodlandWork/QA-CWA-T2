@@ -8,15 +8,15 @@ let createPlaylistButton = document.getElementById("createPlaylistButton");
 let readAllPlaylistsButton = document.getElementById("searchPlaylistButton");
 
 createPlaylistButton.onclick = async () => {
-  await createPlaylist();
+  await createPlaylist(playlistName);
 };
 
 readAllPlaylistsButton.onclick = async () => {
-  await readPlaylist();
+  await readPlaylist(playlistName);
 };
 
 async function createPlaylist(playlistName) {
-  let response = await fetch(`http://localhost:9092/playlist/create`, {
+  let response = await fetch(`http://localhost:8082/playlist/create`, {
     method: "POST",
     headers: {
       "Content-type": "application/json ",
@@ -56,6 +56,7 @@ async function readPlaylist(playlistName) {
   let data = await response.json();
   console.log(data);
 
+  /*
   let div = document.getElementById("myDiv");
   let playlistResult = `Playlist: ${data.name} <br>`;
   let tracks = [];
@@ -68,4 +69,5 @@ async function readPlaylist(playlistName) {
 
   let listItem = `${playlistResult}${tracks}`;
   div.innerHTML = listItem;
+  */
 }

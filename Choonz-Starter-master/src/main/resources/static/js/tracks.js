@@ -8,15 +8,14 @@ let createTrackButton = document.getElementById("createTrackButton");
 let searchAllTracksButton = document.getElementById("searchTrackButton");
 
 createTrackButton.onclick = async () => {
-  await createTrack(playlistId, trackName);
+  await createTrack(trackName);
 };
 
 searchAllTracksButton.onclick = async () => {
-  await searchTrack();
+  await searchTrack(trackName);
 };
 
-async function createTrack(playlistId, trackName) {
-  let playlistIdInt = parseInt(playlistId);
+async function createTrack(trackName) {
   let response = await fetch(`http://localhost:8082/track/create`, {
     method: "POST",
     headers: {
@@ -24,9 +23,6 @@ async function createTrack(playlistId, trackName) {
     },
     body: JSON.stringify({
       title: trackName,
-      playlist: {
-        id: playlistIdInt,
-      },
     }),
   });
 
@@ -40,7 +36,7 @@ async function createTrack(playlistId, trackName) {
   div.innerText = `New task has been added!`;
 }
 
-async function searchTrack() {
+async function searchTrack(trackName) {
   let response = await fetch(
     `http://localhost:8082/track/search/${trackName}`,
     {
@@ -61,6 +57,7 @@ async function searchTrack() {
   let data = await response.json();
   console.log(data);
 
+  /*
   let div = document.getElementById("myDiv");
   let tracks = [];
 
@@ -68,5 +65,5 @@ async function searchTrack() {
     let track = `Track ID: ${data_i.id}<br>Name: ${data_i.name}<br>`;
     tracks.push(track);
   }
-  div.innerHTML = tracks.join("");
+  //console.log(tracks);*/
 }
