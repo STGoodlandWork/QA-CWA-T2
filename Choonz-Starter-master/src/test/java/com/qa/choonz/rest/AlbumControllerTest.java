@@ -8,7 +8,6 @@ import static org.mockito.Mockito.when;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,45 +16,40 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import com.qa.choonz.persistence.domain.Artist;
-import com.qa.choonz.rest.controller.ArtistController;
+import com.qa.choonz.persistence.domain.Album;
+import com.qa.choonz.rest.controller.AlbumController;
+import com.qa.choonz.rest.dto.AlbumDTO;
 import com.qa.choonz.rest.dto.ArtistDTO;
-import com.qa.choonz.service.ArtistService;
+import com.qa.choonz.service.AlbumService;
 
 @SpringBootTest
-public class ArtistControllerTest {
+public class AlbumControllerTest {
 
 	@Autowired
-	private ArtistController controller;
+	private AlbumController controller;
 
 	@MockBean
-	private ArtistService service;
+	private AlbumService service;
 
 	@Autowired
 	private ModelMapper mapper;
 
-	private ArtistDTO mapToDTO(Artist artist) {
-		return this.mapper.map(artist, ArtistDTO.class);
+	private AlbumDTO mapToDTO(Album album) {
+		return this.mapper.map(album, AlbumDTO.class);
 	}
 
-	private final Artist TEST_1 = new Artist(1l, "The Weeknd", null);
-	private final Artist TEST_2 = new Artist(2l, "Daniel Caesar", null);
-	private final Artist TEST_3 = new Artist(3l, "SZA", null);
-	private final Artist TEST_4 = new Artist(4l, "Brent Faiyaz", null);
-	private final Artist TEST_5 = new Artist(5l, "Brent Faiyaz", null);
+	private final Album TEST_1 = new Album(1l, "We shall all be healed", null, null, null, "some url");
+	private final Album TEST_2 = new Album(1l, "Tallahassee", null, null, null, "some url");
+	private final Album TEST_3 = new Album(1l, "In League With Dragons", null, null, null, "some url");
+	private final Album TEST_4 = new Album(1l, "The Sunset Tree", null, null, null, "some url");
 
-	private List<Artist> LISTOFARTIST;
-
-	@BeforeEach
-	void init() {
-		LISTOFARTIST = List.of(TEST_1, TEST_2, TEST_3, TEST_4, TEST_5);
-	}
+	private final List<Album> LIST_OF_ALBUMS = List.of(TEST_1, TEST_2, TEST_3, TEST_4);
 
 	// Create
 	@Test
 	void createTest() throws Exception {
 		when(this.service.create(TEST_1)).thenReturn(this.mapToDTO(TEST_1));
-		assertThat(new ResponseEntity<ArtistDTO>(this.mapToDTO(TEST_1), HttpStatus.CREATED))
+		assertThat(new ResponseEntity<AlbumDTO>(this.service.create(TEST_1), HttpStatus.CREATED))
 				.isEqualTo(this.controller.create(TEST_1));
 		verify(this.service, atLeastOnce()).create(TEST_1);
 	}
@@ -63,7 +57,7 @@ public class ArtistControllerTest {
 	// Read All
 	@Test
 	void readAllTest() throws Exception {
-		List<ArtistDTO> dtos = LISTOFARTIST.stream().map(this::mapToDTO).collect(Collectors.toList());
+		List<AlbumDTO> dtos = LIST_OF_ALBUMS.stream().map(this::mapToDTO).collect(Collectors.toList());
 		when(this.service.read()).thenReturn(dtos);
 		assertThat(this.controller.read()).isEqualTo(new ResponseEntity<>(dtos, HttpStatus.OK));
 	}
@@ -72,7 +66,7 @@ public class ArtistControllerTest {
 	@Test
 	void readByIDTest() throws Exception {
 		when(this.service.read(TEST_3.getId())).thenReturn(this.mapToDTO(TEST_3));
-		assertThat(new ResponseEntity<ArtistDTO>(this.mapToDTO(TEST_3), HttpStatus.OK))
+		assertThat(new ResponseEntity<AlbumDTO>(this.mapToDTO(TEST_3), HttpStatus.OK))
 				.isEqualTo(this.controller.read(TEST_3.getId()));
 		verify(this.service, atLeastOnce()).read(TEST_3.getId());
 	}
@@ -81,7 +75,7 @@ public class ArtistControllerTest {
 	@Test
 	void updateTest() throws Exception {
 		when(this.service.update(TEST_2, TEST_2.getId())).thenReturn(this.mapToDTO(TEST_2));
-		assertThat(new ResponseEntity<ArtistDTO>(this.mapToDTO(TEST_2), HttpStatus.ACCEPTED))
+		assertThat(new ResponseEntity<AlbumDTO>(this.mapToDTO(TEST_2), HttpStatus.ACCEPTED))
 				.isEqualTo(this.controller.update(TEST_2, TEST_2.getId()));
 	}
 
@@ -89,7 +83,7 @@ public class ArtistControllerTest {
 	@Test
 	void deleteTest() throws Exception {
 		when(this.service.delete(TEST_4.getId())).thenReturn(true);
-		assertThat(new ResponseEntity<ArtistDTO>(HttpStatus.NO_CONTENT))
+		assertThat(new ResponseEntity<AlbumDTO>(HttpStatus.NO_CONTENT))
 				.isEqualTo(this.controller.delete(TEST_4.getId()));
 	}
 
@@ -104,9 +98,9 @@ public class ArtistControllerTest {
 	// Search Test
 	@Test
 	void deleteSearchTest() throws Exception {
-		String query = "The Weeknd";
+		String query = "We shall all be healed";
 		when(this.service.search(query)).thenReturn(List.of(mapToDTO(TEST_1)));
-		assertThat(new ResponseEntity<List<ArtistDTO>>(this.service.search(query), HttpStatus.OK))
+		assertThat(new ResponseEntity<List<AlbumDTO>>(this.service.search(query), HttpStatus.OK))
 				.isEqualTo(this.controller.search(query));
 	}
 }
