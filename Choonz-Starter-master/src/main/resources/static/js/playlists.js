@@ -12,7 +12,7 @@ createPlaylistButton.onclick = async () => {
 };
 
 readAllPlaylistsButton.onclick = async () => {
-  await readAllPlaylists();
+  await readPlaylist();
 };
 
 async function createPlaylist(playlistName) {
@@ -35,7 +35,7 @@ async function createPlaylist(playlistName) {
   div.innerText = `New playlist has been added!`;
 }
 
-async function readAllPlaylists(playlistName) {
+async function readPlaylist(playlistName) {
   let response = await fetch(
     `http://localhost:8082/playlist/search/${playlistName}`,
     {

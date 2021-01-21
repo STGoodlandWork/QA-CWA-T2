@@ -7,10 +7,10 @@ playlistNameElement.addEventListener("input", (event) => {
 let readAllGeneresButton = document.getElementById("searchGenreButton");
 
 readAllGenresButton.onclick = async () => {
-  await readAllGenres(genreName);
+  await readGenre(genreName);
 };
 
-async function readAllGenres(genreName) {
+async function readGenre(genreName) {
   let response = await fetch(
     `http://localhost:8082/genre/search/${genreName}`,
     {

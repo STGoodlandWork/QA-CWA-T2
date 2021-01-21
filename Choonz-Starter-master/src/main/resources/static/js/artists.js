@@ -7,11 +7,11 @@ artistNameElement.addEventListener("input", (event) => {
 let readAllArtistsButton = document.getElementById("searchArtistButton");
 
 readAllArtistsButton.onclick = async () => {
-  await readAllArtists(artistName);
+  await readArtist(artistName);
 };
 
 console.log("Before async");
-async function readAllArtists(artistName) {
+async function readArtist(artistName) {
   console.log("After async");
   let response = await fetch(
     `http://localhost:8082/artist/search/${artistName}`,

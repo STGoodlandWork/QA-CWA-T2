@@ -12,7 +12,7 @@ createTrackButton.onclick = async () => {
 };
 
 searchAllTracksButton.onclick = async () => {
-  await searchAllTracks();
+  await searchTrack();
 };
 
 async function createTrack(playlistId, trackName) {
@@ -40,13 +40,16 @@ async function createTrack(playlistId, trackName) {
   div.innerText = `New task has been added!`;
 }
 
-async function searchAllTracks() {
-  let response = await fetch(`http://localhost:8082/track/search`, {
-    method: "GET",
-    headers: {
-      "Content-type": "application/json ",
-    },
-  });
+async function searchTrack() {
+  let response = await fetch(
+    `http://localhost:8082/track/search/${trackName}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json ",
+      },
+    }
+  );
 
   if (!response.ok) {
     console.log(
