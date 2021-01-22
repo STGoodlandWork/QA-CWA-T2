@@ -1,8 +1,12 @@
-INSERT INTO `genre` (`name`, `description`) VALUES('Indie Folk', 'whiny-voiced white sadboi music');
-INSERT INTO `genre` (`name`, `description`) VALUES('Indie Rock and Roll', 'straight bangers from your youth');
+INSERT INTO `genre` (`name`, `description`) VALUES('Rap', 'Rhymthm and Poetry music');
+INSERT INTO `genre` (`name`, `description`) VALUES('Pop', 'Music for the Radio');
+INSERT INTO `genre` (`name`, `description`) VALUES('Country', 'Lil Nas X created this');
+INSERT INTO `genre` (`name`, `description`) VALUES('House', 'Good Vibes Music');
+INSERT INTO `genre` (`name`, `description`) VALUES('R&B', 'Heartbroken people love this');
 
-INSERT INTO `playlist`(`name`, `description`, `artwork`) VALUES('Sadbois', 'whiny musics', 'some url');
-INSERT INTO `playlist`(`name`, `description`, `artwork`) VALUES('Happybois', 'less whiny musics', 'some other url');
+INSERT INTO `playlist`(`name`, `description`, `artwork`) VALUES('The Weeknd', 'Best of The Weeknd', 'some url');
+INSERT INTO `playlist`(`name`, `description`, `artwork`) VALUES('Pop songs', 'best pop songs', 'cool artwork');
+INSERT INTO `playlist`(`name`, `description`, `artwork`) VALUES('80s songs', 'best 80s songs', 'cool artwork');
 
 
 INSERT INTO `artist` (`name`) VALUES('The Weeknd');
@@ -18,10 +22,9 @@ INSERT INTO `album`(`name`, `artist_id`, `cover`, `genre_id`) VALUES('The Sunset
 INSERT INTO `album`(`name`, `artist_id`, `cover`, `genre_id`) VALUES('These Four Walls', null, null, null);
 
 
-INSERT INTO `track` (`title`, `album_id`, `duration`, `lyrics`, `genre_id`, `playlist_id`) values('Cotton', null, 360, 'This song is for the rats...', 1, 1);
-INSERT INTO `track` (`title`, `album_id`, `duration`, `lyrics`, `genre_id`, `playlist_id`) VALUES ('Oceanographers Choice', null, 400, 'WELL...', 1, 1);
-INSERT INTO `track` (`title`, `album_id`, `duration`, `lyrics`, `genre_id`, `playlist_id`) VALUES ('Younger', null, 500, 'Crank that siren high...', 1, 1);
-INSERT INTO `track` (`title`, `album_id`, `duration`, `lyrics`, `genre_id`, `playlist_id`) VALUES ('Broom People', null, 360, '36 Hudson in the garage...', 1, 1);
-INSERT INTO `track` (`title`, `album_id`, `duration`, `lyrics`, `genre_id`, `playlist_id`) VALUES ('This Is My House, This Is My Home', null, 545, 'Woke when it was dark...', 2, 2);
+INSERT INTO `track` (`title`, `duration`, `lyrics`) values('Good Days', 120, 'Laurem Epsom');
+INSERT INTO `track` (`title`, `duration`, `lyrics`) VALUES ('We Hate Git', 120, 'Laurem Epsom');
+INSERT INTO `track` (`title`, `duration`, `lyrics`) VALUES ('Ringtone', 120, 'Laurem Epsom');
+INSERT INTO `track` (`title`, `duration`, `lyrics`) VALUES ('git push -f saved my life', 120, 'Laurem Epsom');
 
 COMMIT;

@@ -44,10 +44,6 @@ public class PlaylistService {
 
 	public PlaylistDTO update(PlaylistDTO playlist, long id) {
 		Playlist toUpdate = this.repo.findById(id).orElseThrow(PlaylistNotFoundException::new);
-		toUpdate.setName(toUpdate.getName());
-		toUpdate.setDescription(toUpdate.getDescription());
-		toUpdate.setArtwork(toUpdate.getArtwork());
-		toUpdate.setTracks(toUpdate.getTracks());
 		SpringBeanUtil.mergeNotNull(playlist, toUpdate);
 		Playlist updated = this.repo.save(toUpdate);
 		return this.mapToDTO(updated);

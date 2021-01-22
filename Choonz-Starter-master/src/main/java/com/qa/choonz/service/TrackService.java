@@ -52,7 +52,6 @@ public class TrackService {
 		Track toUpdate = this.repo.findById(id).orElseThrow(TrackNotFoundException::new);
 		toUpdate.setTitle(track.getTitle());
 		toUpdate.setArtist(track.getArtist());
-		toUpdate.setGenre(track.getGenre());
 		toUpdate.setAlbum(track.getAlbum());
 		toUpdate.setDuration(track.getDuration());
 		toUpdate.setLyrics(track.getLyrics());
