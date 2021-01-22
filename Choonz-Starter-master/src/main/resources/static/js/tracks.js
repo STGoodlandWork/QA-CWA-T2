@@ -34,10 +34,10 @@ async function createTrack(trackInfo) {
       title: trackInfo[0].input,
       duration: trackInfo[1].input,
       lyrics: trackInfo[2].input,
-      /* album: trackInfo[3].input,
+      album: trackInfo[3].input,
       artist: trackInfo[4].input,
       genre: trackInfo[5].input,
-      playlist: trackInfo[6].input,*/
+      playlist: trackInfo[6].input,
     }),
   });
 
