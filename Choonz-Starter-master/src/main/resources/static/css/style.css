@@ -133,4 +133,11 @@ footer {
   color: white;
   text-align: center;
 }
+
+.inlineCard {
+
+  display: inline-block;
+  min-height: 100px;
+  margin-right:16px;
+}
   
