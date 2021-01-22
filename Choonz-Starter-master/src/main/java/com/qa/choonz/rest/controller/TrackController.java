@@ -48,7 +48,7 @@ public class TrackController {
 	}
 
 	@PutMapping("/update/{id}")
-	public ResponseEntity<TrackDTO> update(@RequestBody TrackDTO track, @PathVariable long id) {
+	public ResponseEntity<TrackDTO> update(@RequestBody Track track, @PathVariable long id) {
 		return new ResponseEntity<TrackDTO>(this.service.update(track, id), HttpStatus.ACCEPTED);
 	}
 

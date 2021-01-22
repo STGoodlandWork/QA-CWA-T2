@@ -42,7 +42,7 @@ public class GenreService {
 		return this.mapToDTO(found);
 	}
 
-	public GenreDTO update(GenreDTO genre, Long id) {
+	public GenreDTO update(Genre genre, Long id) {
 		Genre toUpdate = this.repo.findById(id).orElseThrow(GenreNotFoundException::new);
 		toUpdate.setName(genre.getName());
 		toUpdate.setDescription(genre.getDescription());

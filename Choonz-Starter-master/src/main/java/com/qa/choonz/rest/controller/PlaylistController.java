@@ -46,7 +46,7 @@ public class PlaylistController {
 	}
 
 	@PutMapping("/update/{id}")
-	public ResponseEntity<PlaylistDTO> update(@RequestBody PlaylistDTO playlist, @PathVariable long id) {
+	public ResponseEntity<PlaylistDTO> update(@RequestBody Playlist playlist, @PathVariable long id) {
 		return new ResponseEntity<PlaylistDTO>(this.service.update(playlist, id), HttpStatus.ACCEPTED);
 	}
 
