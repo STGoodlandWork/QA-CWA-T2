@@ -81,7 +81,7 @@ function createCard(data){
   let trackDiv = document.querySelector("#albumDisplay");
   
   let tempString = '<div class="card text-white bg-dark mb-3 inlineCard" style="max-width: 18rem;">';
-      tempString +='<div class="card-header">Tracks</div>';
+      tempString +='<div class="card-header">Album</div>';
       tempString += '<div class="card-body">';
       tempString +=  '<h5 class="card-title">' + data.name + '</h5>';
       tempString += '<button type="button" class="btn btn-warning">Warning</button>';
