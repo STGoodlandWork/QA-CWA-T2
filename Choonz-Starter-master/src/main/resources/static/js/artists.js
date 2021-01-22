@@ -42,6 +42,7 @@ async function readArtist(artistName) {
 
 //Read All Function Fetch Request
 
+function readAllArtist() {
 fetch('http://localhost:8082/artist/read')
   .then(
     function(response) {
@@ -67,6 +68,9 @@ fetch('http://localhost:8082/artist/read')
   .catch(function(err) {
     console.log('Fetch Error :-S', err);
   });
+}
+
+readAllArtist();
 
 function createArtistCard(data){
 
@@ -83,4 +87,22 @@ function createArtistCard(data){
 
   myDiv.innerHTML += tempString;
 
+}
+
+function deleteArtist(id){
+  fetch("http://localhost:8082/artist/delete/" + id, {
+      method: 'delete',
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      }
+  
+    })
+    .then(function (data) {
+      console.log('Request succeeded with JSON response', data);
+      window.location.reload();
+    })
+    .catch(function (error) {
+      console.log('Request failed', error);
+    });
+    
 }
