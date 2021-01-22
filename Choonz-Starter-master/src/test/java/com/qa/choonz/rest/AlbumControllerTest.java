@@ -74,9 +74,9 @@ public class AlbumControllerTest {
 	// Update
 	@Test
 	void updateTest() throws Exception {
-		when(this.service.update(mapToDTO(TEST_2), TEST_2.getId())).thenReturn(this.mapToDTO(TEST_2));
+		when(this.service.update(TEST_2, TEST_2.getId())).thenReturn(this.mapToDTO(TEST_2));
 		assertThat(new ResponseEntity<AlbumDTO>(this.mapToDTO(TEST_2), HttpStatus.ACCEPTED))
-				.isEqualTo(this.controller.update(this.mapToDTO(TEST_2), TEST_2.getId()));
+				.isEqualTo(this.controller.update(TEST_2, TEST_2.getId()));
 	}
 
 	// Delete

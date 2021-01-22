@@ -31,7 +31,6 @@ public class Genre {
 	@Column(unique = true)
 	private String name;
 
-	@NotNull
 	@Size(max = 250)
 	@Column(unique = true)
 	private String description;

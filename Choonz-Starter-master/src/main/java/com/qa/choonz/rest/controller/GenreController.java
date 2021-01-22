@@ -46,7 +46,7 @@ public class GenreController {
 	}
 
 	@PutMapping("/update/{id}")
-	public ResponseEntity<GenreDTO> update(@RequestBody GenreDTO genre, @PathVariable long id) {
+	public ResponseEntity<GenreDTO> update(@RequestBody Genre genre, @PathVariable long id) {
 		return new ResponseEntity<GenreDTO>(this.service.update(genre, id), HttpStatus.ACCEPTED);
 	}
 
