@@ -76,7 +76,7 @@ public class AlbumServiceTest {
 		AlbumDTO expectedDTO = mapToDTO(updatedAlbum);
 		when(repo.findById(test_album.getId())).thenReturn(Optional.of(test_album));
 		when(repo.save(updatedAlbum)).thenReturn(updatedAlbum);
-		assertThat(service.update(mapToDTO(test_album), test_album.getId())).isEqualTo(expectedDTO);
+		assertThat(service.update(test_album, test_album.getId())).isEqualTo(expectedDTO);
 		verify(repo, atLeastOnce()).findById(test_album.getId());
 		verify(repo, atLeastOnce()).save(updatedAlbum);
 
