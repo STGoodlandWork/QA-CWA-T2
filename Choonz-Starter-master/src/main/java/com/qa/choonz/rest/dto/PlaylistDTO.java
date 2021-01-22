@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 
 public class PlaylistDTO {
 
-	private long id;
+	private Long id;
 	private String name;
 	private String description;
 	private String artwork;

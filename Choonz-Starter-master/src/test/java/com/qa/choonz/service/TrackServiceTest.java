@@ -77,12 +77,14 @@ public class TrackServiceTest {
 
 	@Test
 	void updateTest() throws Exception {
-		TrackDTO expectedDTO = mapToDTO(TEST_4);
+		Track newNameTEST_4 = TEST_4;
+		newNameTEST_4.setTitle("Ringtone");
+		TrackDTO expectedDTO = mapToDTO(newNameTEST_4);
 		when(repo.findById(TEST_4.getId())).thenReturn(Optional.of(TEST_4));
-		when(repo.save(TEST_4)).thenReturn(TEST_4);
-		assertThat(service.update(TEST_4, TEST_4.getId())).isEqualTo(expectedDTO);
+		when(repo.save(newNameTEST_4)).thenReturn(newNameTEST_4);
+		assertThat(service.update(mapToDTO(TEST_4), TEST_4.getId())).isEqualTo(expectedDTO);
 		verify(repo, atLeastOnce()).findById(TEST_4.getId());
-		verify(repo, atLeastOnce()).save(TEST_4);
+		verify(repo, atLeastOnce()).save(newNameTEST_4);
 	}
 
 	@Test

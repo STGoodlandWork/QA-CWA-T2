@@ -38,11 +38,11 @@ public class GenreControllerTest {
 		return this.mapper.map(genre, GenreDTO.class);
 	}
 
-	private final Genre TEST_1 = new Genre(1l, "Rap", "music", null);
-	private final Genre TEST_2 = new Genre(1l, "Pop", "music", null);
-	private final Genre TEST_3 = new Genre(1l, "Country", "music", null);
-	private final Genre TEST_4 = new Genre(1l, "House", "music", null);
-	private final Genre TEST_5 = new Genre(1l, "R&B", "music", null);
+	private final Genre TEST_1 = new Genre("Rap", "Rhymthm and Poetry music", null);
+	private final Genre TEST_2 = new Genre(2l, "Pop", "Music for the Radio", null);
+	private final Genre TEST_3 = new Genre(3l, "Country", "Lil Nas X created this", null);
+	private final Genre TEST_4 = new Genre(4l, "House", "Good Vibes Music", null);
+	private final Genre TEST_5 = new Genre(5l, "R&B", "Heartbroken people love this", null);
 
 	private List<Genre> LISTOFGENRES;
 
@@ -80,9 +80,9 @@ public class GenreControllerTest {
 	// Update
 	@Test
 	void updateTest() throws Exception {
-		when(this.service.update(TEST_2, TEST_2.getId())).thenReturn(this.mapToDTO(TEST_2));
+		when(this.service.update(this.mapToDTO(TEST_2), TEST_2.getId())).thenReturn(this.mapToDTO(TEST_2));
 		assertThat(new ResponseEntity<GenreDTO>(this.mapToDTO(TEST_2), HttpStatus.ACCEPTED))
-				.isEqualTo(this.controller.update(TEST_2, TEST_2.getId()));
+				.isEqualTo(this.controller.update(this.mapToDTO(TEST_2), TEST_2.getId()));
 	}
 
 	// Delete
@@ -104,7 +104,7 @@ public class GenreControllerTest {
 	// Search Test
 	@Test
 	void deleteSearchTest() throws Exception {
-		String query = "Good Days";
+		String query = "Rap";
 		when(this.service.search(query)).thenReturn(List.of(mapToDTO(TEST_1)));
 		assertThat(new ResponseEntity<List<GenreDTO>>(this.service.search(query), HttpStatus.OK))
 				.isEqualTo(this.controller.search(query));

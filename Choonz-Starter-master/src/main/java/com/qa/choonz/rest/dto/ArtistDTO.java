@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ArtistDTO {
 
-	private long id;
+	private Long id;
 	private String name;
 	private List<AlbumDTO> albums;
 	private List<TrackDTO> tracks;

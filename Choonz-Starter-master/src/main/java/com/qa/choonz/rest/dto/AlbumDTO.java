@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 
 public class AlbumDTO {
 
-	private long id;
+	private Long id;
 	private String name;
 	private List<TrackDTO> tracks;
 	private Artist artist;
