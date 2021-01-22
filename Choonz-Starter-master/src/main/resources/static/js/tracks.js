@@ -1,28 +1,43 @@
-let trackNameElement = document.getElementById("track-input");
-let trackName = "";
-trackNameElement.addEventListener("input", (event) => {
-  trackName = event.target.value;
+let trackInfo = document.getElementsByClassName("create-form-control");
+console.log(trackInfo);
+let trackArray = [];
+for (let i = 0; i < trackInfo.length; i++) {
+  let trackData = { element: trackInfo[i], input: "" };
+  trackArray.push(trackData);
+}
+
+trackArray.forEach((trackInfo) => {
+  trackInfo.element.addEventListener("input", (event) => {
+    trackInfo.input = event.target.value;
+  });
 });
 
 let createTrackButton = document.getElementById("createTrackButton");
 let searchAllTracksButton = document.getElementById("searchTrackButton");
 
 createTrackButton.onclick = async () => {
-  await createTrack(trackName);
+  await createTrack(trackInfo);
 };
 
 searchAllTracksButton.onclick = async () => {
-  await searchTrack(trackName);
+  await searchTrack(trackInfo);
 };
 
-async function createTrack(trackName) {
+async function createTrack(trackInfo) {
+  console.log(trackArray);
   let response = await fetch(`http://localhost:8082/track/create`, {
     method: "POST",
     headers: {
       "Content-type": "application/json ",
     },
     body: JSON.stringify({
-      title: trackName,
+      title: trackInfo[0].input,
+      duration: trackInfo[1].input,
+      lyrics: trackInfo[2].input,
+      /* album: trackInfo[3].input,
+      artist: trackInfo[4].input,
+      genre: trackInfo[5].input,
+      playlist: trackInfo[6].input,*/
     }),
   });
 
