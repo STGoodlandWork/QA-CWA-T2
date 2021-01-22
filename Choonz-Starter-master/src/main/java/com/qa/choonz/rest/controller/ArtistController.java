@@ -46,7 +46,7 @@ public class ArtistController {
 	}
 
 	@PutMapping("/update/{id}")
-	public ResponseEntity<ArtistDTO> update(@RequestBody Artist artist, @PathVariable long id) {
+	public ResponseEntity<ArtistDTO> update(@RequestBody ArtistDTO artist, @PathVariable long id) {
 		return new ResponseEntity<ArtistDTO>(this.service.update(artist, id), HttpStatus.ACCEPTED);
 	}
 
@@ -55,9 +55,10 @@ public class ArtistController {
 		return this.service.delete(id) ? new ResponseEntity<ArtistDTO>(HttpStatus.NO_CONTENT)
 				: new ResponseEntity<ArtistDTO>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
-	 @GetMapping("/search/{query}")
-	    public ResponseEntity<List<ArtistDTO>> search(@PathVariable String query) {
-	        return new ResponseEntity<List<ArtistDTO>>(this.service.search(query), HttpStatus.OK);
-	    }
+
+	@GetMapping("/search/{query}")
+	public ResponseEntity<List<ArtistDTO>> search(@PathVariable String query) {
+		return new ResponseEntity<List<ArtistDTO>>(this.service.search(query), HttpStatus.OK);
+	}
 
 }

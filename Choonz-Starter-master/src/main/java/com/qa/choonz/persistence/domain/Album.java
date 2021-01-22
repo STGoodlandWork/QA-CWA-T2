@@ -26,7 +26,7 @@ public class Album {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 
 	@NotNull
 	@Size(max = 100)
@@ -54,6 +54,26 @@ public class Album {
 		this.artist = artist;
 		this.genre = genre;
 		this.cover = cover;
+	}
+
+	public Album(@NotNull @Size(max = 100) String name, List<Track> tracks, Artist artist, Genre genre, String cover) {
+		super();
+		this.name = name;
+		this.tracks = tracks;
+		this.artist = artist;
+		this.genre = genre;
+		this.cover = cover;
+	}
+
+	public Album(long id, @NotNull @Size(max = 100) String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
+
+	public Album(@NotNull @Size(max = 100) String name) {
+		super();
+		this.name = name;
 	}
 
 }

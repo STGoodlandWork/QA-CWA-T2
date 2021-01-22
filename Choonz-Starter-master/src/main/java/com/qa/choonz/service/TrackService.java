@@ -11,6 +11,7 @@ import com.qa.choonz.exception.TrackNotFoundException;
 import com.qa.choonz.persistence.domain.Track;
 import com.qa.choonz.persistence.repository.TrackRepository;
 import com.qa.choonz.rest.dto.TrackDTO;
+import com.qa.choonz.util.SpringBeanUtil;
 
 @Service
 public class TrackService {
@@ -47,15 +48,15 @@ public class TrackService {
 	}
 
 	// Update
-	public TrackDTO update(Track track, long id) {
+	public TrackDTO update(TrackDTO track, long id) {
 		Track toUpdate = this.repo.findById(id).orElseThrow(TrackNotFoundException::new);
 		toUpdate.setTitle(track.getTitle());
 		toUpdate.setArtist(track.getArtist());
-		toUpdate.setGenre(track.getGenre());
 		toUpdate.setAlbum(track.getAlbum());
 		toUpdate.setDuration(track.getDuration());
 		toUpdate.setLyrics(track.getLyrics());
 		toUpdate.setPlaylist(track.getPlaylist());
+		SpringBeanUtil.mergeNotNull(track, toUpdate);
 		Track updated = this.repo.save(toUpdate);
 		return this.mapToDTO(updated);
 	}

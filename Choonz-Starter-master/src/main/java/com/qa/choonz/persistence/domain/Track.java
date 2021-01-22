@@ -22,7 +22,7 @@ public class Track {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 
 	@NotNull
 	@Size(max = 100)
@@ -61,6 +61,32 @@ public class Track {
 		this.lyrics = lyrics;
 		this.artist = artist;
 		this.genre = genre;
+	}
+
+	public Track(Long id, @NotNull @Size(max = 100) String title, int duration, String lyrics) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.duration = duration;
+		this.lyrics = lyrics;
+	}
+
+	public Track(Long id, @NotNull @Size(max = 100) String title) {
+		super();
+		this.id = id;
+		this.title = title;
+	}
+
+	public Track(@NotNull @Size(max = 100) String title) {
+		super();
+		this.title = title;
+	}
+
+	public Track(@NotNull @Size(max = 100) String title, int duration, String lyrics) {
+		super();
+		this.title = title;
+		this.duration = duration;
+		this.lyrics = lyrics;
 	}
 
 }

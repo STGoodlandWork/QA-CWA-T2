@@ -23,41 +23,42 @@ import com.qa.choonz.service.GenreService;
 @CrossOrigin
 public class GenreController {
 
-    private GenreService service;
+	private GenreService service;
 
-    public GenreController(GenreService service) {
-        super();
-        this.service = service;
-    }
+	public GenreController(GenreService service) {
+		super();
+		this.service = service;
+	}
 
-    @PostMapping("/create")
-    public ResponseEntity<GenreDTO> create(@RequestBody Genre genre) {
-        return new ResponseEntity<GenreDTO>(this.service.create(genre), HttpStatus.CREATED);
-    }
+	@PostMapping("/create")
+	public ResponseEntity<GenreDTO> create(@RequestBody Genre genre) {
+		return new ResponseEntity<GenreDTO>(this.service.create(genre), HttpStatus.CREATED);
+	}
 
-    @GetMapping("/read")
-    public ResponseEntity<List<GenreDTO>> read() {
-        return new ResponseEntity<List<GenreDTO>>(this.service.read(), HttpStatus.OK);
-    }
+	@GetMapping("/read")
+	public ResponseEntity<List<GenreDTO>> read() {
+		return new ResponseEntity<List<GenreDTO>>(this.service.read(), HttpStatus.OK);
+	}
 
-    @GetMapping("/read/{id}")
-    public ResponseEntity<GenreDTO> read(@PathVariable long id) {
-        return new ResponseEntity<GenreDTO>(this.service.read(id), HttpStatus.OK);
-    }
+	@GetMapping("/read/{id}")
+	public ResponseEntity<GenreDTO> read(@PathVariable long id) {
+		return new ResponseEntity<GenreDTO>(this.service.read(id), HttpStatus.OK);
+	}
 
-    @PutMapping("/update/{id}")
-    public ResponseEntity<GenreDTO> update(@RequestBody Genre genre, @PathVariable long id) {
-        return new ResponseEntity<GenreDTO>(this.service.update(genre, id), HttpStatus.ACCEPTED);
-    }
+	@PutMapping("/update/{id}")
+	public ResponseEntity<GenreDTO> update(@RequestBody GenreDTO genre, @PathVariable long id) {
+		return new ResponseEntity<GenreDTO>(this.service.update(genre, id), HttpStatus.ACCEPTED);
+	}
 
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<GenreDTO> delete(@PathVariable long id) {
-        return this.service.delete(id) ? new ResponseEntity<GenreDTO>(HttpStatus.NO_CONTENT)
-                : new ResponseEntity<GenreDTO>(HttpStatus.INTERNAL_SERVER_ERROR);
-    }
-    @GetMapping("/search/{query}")
-    public ResponseEntity<List<GenreDTO>> search(@PathVariable String query) {
-        return new ResponseEntity<List<GenreDTO>>(this.service.search(query), HttpStatus.OK);
-    }
+	@DeleteMapping("/delete/{id}")
+	public ResponseEntity<GenreDTO> delete(@PathVariable long id) {
+		return this.service.delete(id) ? new ResponseEntity<GenreDTO>(HttpStatus.NO_CONTENT)
+				: new ResponseEntity<GenreDTO>(HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+
+	@GetMapping("/search/{query}")
+	public ResponseEntity<List<GenreDTO>> search(@PathVariable String query) {
+		return new ResponseEntity<List<GenreDTO>>(this.service.search(query), HttpStatus.OK);
+	}
 
 }

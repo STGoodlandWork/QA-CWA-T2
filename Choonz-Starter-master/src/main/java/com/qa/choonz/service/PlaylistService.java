@@ -10,6 +10,7 @@ import com.qa.choonz.exception.PlaylistNotFoundException;
 import com.qa.choonz.persistence.domain.Playlist;
 import com.qa.choonz.persistence.repository.PlaylistRepository;
 import com.qa.choonz.rest.dto.PlaylistDTO;
+import com.qa.choonz.util.SpringBeanUtil;
 
 @Service
 public class PlaylistService {
@@ -41,12 +42,13 @@ public class PlaylistService {
 		return this.mapToDTO(found);
 	}
 
-	public PlaylistDTO update(Playlist playlist, long id) {
+	public PlaylistDTO update(PlaylistDTO playlist, long id) {
 		Playlist toUpdate = this.repo.findById(id).orElseThrow(PlaylistNotFoundException::new);
 		toUpdate.setName(toUpdate.getName());
 		toUpdate.setDescription(toUpdate.getDescription());
 		toUpdate.setArtwork(toUpdate.getArtwork());
 		toUpdate.setTracks(toUpdate.getTracks());
+		SpringBeanUtil.mergeNotNull(playlist, toUpdate);
 		Playlist updated = this.repo.save(toUpdate);
 		return this.mapToDTO(updated);
 	}

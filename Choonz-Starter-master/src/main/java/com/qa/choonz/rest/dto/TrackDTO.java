@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class TrackDTO {
 
-	private long id;
+	private Long id;
 	private String title;
 	private Artist artist;
 	private Genre genre;
