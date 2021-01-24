@@ -82,53 +82,31 @@
 
     </div>
     <!--CRUD Buttons-->
-    <button type="button" class="btn btn-outline-info">Read</button>
+    <button type="button" class="btn btn-outline-info" onclick="toggleReadOne()">Read</button>
     <button type="button" class="btn btn-outline-warning">Update</button>
     <button type="button" class="btn btn-outline-danger">Delete</button>
     </div>
 
-    <div>
+    <div id="toggleReadOne" style="display: none; max-width: 400px;">
         <input class="form-control mr-sm-2" type="text" id="album-input" placeholder="Search">
         <button class="btn btn-success my-2 my-sm-0" id="searchAlbumButton" type="submit">Search Album</button>
     </div>
 
-
-    <br><br>
-
-
-    <!--/User Details-->
-
     <!--Main Artist Display-->
     <div id="albumDisplay">
 
-
-
-
-
     </div>
 
-
-
-
-
-
-    <!--/main -->
-
-
-
-
-
-
-
-
-
-
-    <!--Hard coded cards for demo (Delete once complete)-->
-
-    <!--/main -->
-
-
-
+    <script>
+        function toggleReadOne() {
+            var x = document.getElementById("toggleReadOne");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>
     <script src="js/albums.js"></script>
     <script src="js/front.js"></script>
 

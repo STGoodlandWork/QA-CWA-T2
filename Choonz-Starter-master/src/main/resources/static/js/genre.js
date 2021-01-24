@@ -1,6 +1,6 @@
 let genreNameElement = document.getElementById("genre-input");
 let genreName = "";
-playlistNameElement.addEventListener("input", (event) => {
+genreNameElement.addEventListener("input", (event) => {
   genreName = event.target.value;
 });
 

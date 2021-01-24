@@ -87,12 +87,12 @@
 
   <!--CRUD buttons-->
   <button type="button" class="btn btn-outline-success" id="createTrackButton">Create</button>
-  <button type="button" class="btn btn-outline-info" id="searchTrackButton">Read</button>
+  <button type="button" class="btn btn-outline-info" onclick="toggleReadOne()">Read</button>
   <button type="button" class="btn btn-outline-warning" id="updateTrackButton">Update</button>
   <button type="button" class="btn btn-outline-danger" id="deleteTrackButton">Delete</button>
 
 
-  <div>
+  <div id="toggleReadOne" style="display: none; max-width: 400px;">
     <input class="form-control mr-sm-2" type="text" id="track-input" placeholder="Search">
     <button class="btn btn-success my-2 my-sm-0" id="searchTrackButton" type="submit">Search Track</button>
   </div>
@@ -110,7 +110,16 @@
 
 
 
-
+  <script>
+    function toggleReadOne() {
+      var x = document.getElementById("toggleReadOne");
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+      }
+    }
+  </script>
   <script src="js/tracks.js"></script>
   <script src="js/front.js"></script>
 

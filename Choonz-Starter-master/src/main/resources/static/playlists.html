@@ -76,7 +76,7 @@
   <!--CRUD Buttons-->
 
   <button type="button" class="btn btn-outline-success" id="createPlaylistButton">Create</button>
-  <button type="button" class="btn btn-outline-info">Read</button>
+  <button type="button" class="btn btn-outline-info" onclick="toggleReadOne()">Read</button>
   <button type="button" class="btn btn-outline-warning">Update</button>
   <button type="button" class="btn btn-outline-danger">Delete</button>
 
@@ -85,7 +85,7 @@
   <!--Playlist Display-->
 
 
-  <div>
+  <div id="toggleReadOne" style="display: none; max-width: 400px;">
     <input class="form-control mr-sm-2" type="text" id="playlist-input" placeholder="Search">
     <button class="btn btn-success my-2 my-sm-0" id="searchPlaylistButton" type="submit">Search Playlist</button>
   </div>
@@ -99,7 +99,16 @@
 
 
 
-
+  <script>
+    function toggleReadOne() {
+      var x = document.getElementById("toggleReadOne");
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+      }
+    }
+  </script>
   <script src="js/playlists.js"></script>
   <script src="js/front.js"></script>
 
