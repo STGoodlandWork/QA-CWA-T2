@@ -44,8 +44,8 @@
 
             </ul>
             <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="text" id="playlist-input" placeholder="Search">
-                <button class="btn btn-success my-2 my-sm-0" id="searchPlaylistButton" type="submit">Search</button>
+                <input class="form-control mr-sm-2" type="text" id="track-input" placeholder="Search">
+                <button class="btn btn-success my-2 my-sm-0" id="searchArtistButton" type="submit">Search</button>
             </form>
         </div>
     </nav>
@@ -66,30 +66,44 @@
 
         <br>
 
-        <h1 class="display-4">Create a new playlist</h1>
+        <h1 class="display-4">Create a new track</h1>
         <br>
         <form method="post" class="viewRecord">
 
             <div class="form-group">
-                <label for="exampleInputEmail1">Playlist name:</label>
-                <input type="text" class="form-control" id="name">
+                <label for="exampleInputEmail1">Title of the track:</label>
+                <input type="text" class="form-control" id="title">
             </div>
             <div class="form-group">
-                <label for="exampleInputEmail1">Playlist artwork:</label>
-                <input type="text" class="form-control" id="img">
+                <label for="exampleInputEmail1">Lyrics of the track:</label>
+                <input type="text" class="form-control" id="lyrics">
             </div>
             <div class="form-group">
-                <label for="exampleInputEmail1">Playlist description:</label>
-                <input type="text" class="form-control" id="description" a>
+                <label for="exampleInputEmail1">Duration of the track:</label>
+                <input type="text" class="form-control" id="duration">
             </div>
-
-
+            <div class="form-group">
+                <label for="exampleInputEmail1">Name or ID of artist:</label>
+                <input type="text" class="form-control" id="artist" a>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Genre:</label>
+                <input type="text" class="form-control" id="genre" a>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Name or ID of album:</label>
+                <input type="text" class="form-control" id="album" a>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Name or ID of playlist:</label>
+                <input type="text" class="form-control" id="playlist" a>
+            </div>
 
 
 
 
             <br>
-            <button type="" class="btn btn-success" onclick="location.href='playlists.html';"
+            <button type="" class="btn btn-success" onclick="location.href='tracks.html';"
                 value="update">Submit</button>
             <button type="button" class="btn btn-secondary" onclick="location.href=document.referrer;"
                 value="update">Cancel</button>
@@ -97,7 +111,7 @@
 
 
 
-        <script src="../js/create_playlist.js"></script>
+        <script src="../js/create_track.js"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
             integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
             crossorigin="anonymous"></script>

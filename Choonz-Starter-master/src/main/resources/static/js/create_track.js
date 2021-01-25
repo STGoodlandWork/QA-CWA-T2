@@ -5,22 +5,32 @@ document
     let formElements = document.querySelector("form.viewRecord").elements;
     console.log(formElements);
 
-    let name = formElements["name"].value;
+    let title = formElements["title"].value;
+    let lyrics = formElements["lyrics"].value;
+    let duration = formElements["duration"].value;
     let artist = formElements["artist"].value;
     let genre = formElements["genre"].value;
-    let img = formElements["img"].value;
+    let album = formElements["album"].value;
+    let playlist = formElements["playlist"].value;
 
     let data = {
-      name: name,
+      title: title,
+      lyrics: lyrics,
+      duration: duration,
       artist: {
         id: artist,
       },
       genre: {
         id: genre,
       },
-      cover: img,
+      album: {
+        id: album,
+      },
+      playlist: {
+        id: playlist,
+      },
     };
-    sessionStorage.setItem("name", name);
+    sessionStorage.setItem("title", title);
     console.log("Data to post", data);
     sendData(data);
 
@@ -28,7 +38,7 @@ document
   });
 
 function sendData(data) {
-  fetch("http://localhost:8082/album/create", {
+  fetch("http://localhost:8082/track/create", {
     method: "post",
     headers: {
       "Content-type": "application/json; charset=UTF-8",
