@@ -18,16 +18,16 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import com.qa.choonz.persistence.domain.Track;
 import com.qa.choonz.persistence.repository.TrackRepository;
 import com.qa.choonz.rest.dto.TrackDTO;
-import com.qa.choonz.utils.BeanUtils;
+import com.qa.choonz.util.SpringBeanUtil;
 
 @SpringBootTest
-public class TrackServiceTest {
+class TrackServiceTest {
 
 	@MockBean
 	private TrackRepository repo;
 
 	@MockBean
-	private BeanUtils util;
+	private SpringBeanUtil util;
 
 	@Autowired
 	private ModelMapper mapper;
@@ -39,12 +39,12 @@ public class TrackServiceTest {
 		return this.mapper.map(track, TrackDTO.class);
 	}
 
-	private final Track TEST_1 = new Track(1l, "Good Days", null, null, null, 120, "Laurem Epsom", null);
-	private final Track TEST_2 = new Track(2l, "We Hate Git", null, null, null, 120, "Laurem Epsom", null);
-	private final Track TEST_3 = new Track(3l, "Git GUI's FTW", null, null, null, 120, "Laurem Epsom", null);
-	private final Track TEST_4 = new Track(4l, "git push -f saved my life", null, null, null, 120, "Laurem Epsom",
-			null);
-	private final Track TEST_5 = new Track(5l, "Great Days", null, null, null, 120, "Laurem Epsom", null);
+	private final Track TEST_1 = new Track(1l, "Good Days", null, null, null, null, 120, "Laurem Epsom");
+	private final Track TEST_2 = new Track(2l, "We Hate Git", null, null, null, null, 120, "Laurem Epsom");
+	private final Track TEST_3 = new Track(3l, "Git GUI's FTW", null, null, null, null, 120, "Laurem Epsom");
+	private final Track TEST_4 = new Track(4l, "git push -f saved my life", null, null, null, null, 120,
+			"Laurem Epsom");
+	private final Track TEST_5 = new Track(5l, "Great Days", null, null, null, null, 120, "Laurem Epsom");
 
 	private List<TrackDTO> LISTOFTRACKS;
 
@@ -82,7 +82,7 @@ public class TrackServiceTest {
 		TrackDTO expectedDTO = mapToDTO(newNameTEST_4);
 		when(repo.findById(TEST_4.getId())).thenReturn(Optional.of(TEST_4));
 		when(repo.save(newNameTEST_4)).thenReturn(newNameTEST_4);
-		assertThat(service.update(TEST_4, TEST_4.getId())).isEqualTo(expectedDTO);
+		assertThat(service.update(mapToDTO(TEST_4), TEST_4.getId())).isEqualTo(expectedDTO);
 		verify(repo, atLeastOnce()).findById(TEST_4.getId());
 		verify(repo, atLeastOnce()).save(newNameTEST_4);
 	}
@@ -90,7 +90,7 @@ public class TrackServiceTest {
 	@Test
 	void deleteTest() throws Exception {
 		when(repo.existsById(TEST_5.getId())).thenReturn(false);
-		assertThat(service.delete(TEST_5.getId())).isEqualTo(true);
+		assertThat(service.delete(TEST_5.getId())).isTrue();
 		verify(repo, atLeastOnce()).deleteById(TEST_5.getId());
 		verify(repo, atLeastOnce()).existsById(TEST_5.getId());
 	}

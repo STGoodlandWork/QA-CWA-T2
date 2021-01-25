@@ -41,14 +41,14 @@ public class SearchController {
 	@GetMapping("/{query}")
 	public ResponseEntity<List<Object>> search(@PathVariable String query) {
 
-		List<Object> combined = new ArrayList<Object>();
+		List<Object> combined = new ArrayList<>();
 		combined.addAll(trackservice.search(query));
 		combined.addAll(playlistservice.search(query));
 		combined.addAll(genreservice.search(query));
 		combined.addAll(artistservice.search(query));
 		combined.addAll(albumservice.search(query));
 
-		return new ResponseEntity<List<Object>>(combined, HttpStatus.OK);
+		return new ResponseEntity<>(combined, HttpStatus.OK);
 
 	}
 

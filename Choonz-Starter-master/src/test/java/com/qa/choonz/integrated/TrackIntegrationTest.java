@@ -28,7 +28,7 @@ import com.qa.choonz.rest.dto.TrackDTO;
 @AutoConfigureMockMvc
 @Sql(scripts = { "classpath:task-schema.sql",
 		"classpath:testdata.sql" }, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
-public class TrackIntegrationTest {
+class TrackIntegrationTest {
 	@Autowired
 	private MockMvc mvc;
 
@@ -45,10 +45,10 @@ public class TrackIntegrationTest {
 	private final String URI = "/track/";
 
 	private final Track TEST_1 = new Track("Good Days", 120, "Laurem Epsom");
-	private final Track TEST_2 = new Track(2l, "We Hate Git", null, null, null, 120, "Laurem Epsom", null);
-	private final Track TEST_3 = new Track(3l, "Ringtone", null, null, null, 120, "Laurem Epsom", null);
-	private final Track TEST_4 = new Track(4l, "git push -f saved my life", null, null, null, 120, "Laurem Epsom",
-			null);
+	private final Track TEST_2 = new Track(2l, "We Hate Git", null, null, null, null, 120, "Laurem Epsom");
+	private final Track TEST_3 = new Track(3l, "Git GUI's FTW", null, null, null, null, 120, "Laurem Epsom");
+	private final Track TEST_4 = new Track(4l, "git push -f saved my life", null, null, null, null, 120,
+			"Laurem Epsom");
 
 	@Test
 	void createTest() throws Exception {

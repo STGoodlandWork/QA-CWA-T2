@@ -18,16 +18,16 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import com.qa.choonz.persistence.domain.Playlist;
 import com.qa.choonz.persistence.repository.PlaylistRepository;
 import com.qa.choonz.rest.dto.PlaylistDTO;
-import com.qa.choonz.utils.BeanUtils;
+import com.qa.choonz.util.SpringBeanUtil;
 
 @SpringBootTest
-public class PlaylistServiceTest {
+class PlaylistServiceTest {
 
 	@MockBean
 	private PlaylistRepository repo;
 
 	@MockBean
-	private BeanUtils util;
+	private SpringBeanUtil util;
 
 	@Autowired
 	private ModelMapper mapper;
@@ -81,7 +81,7 @@ public class PlaylistServiceTest {
 		PlaylistDTO expectedDTO = mapToDTO(newNameTEST_4);
 		when(repo.findById(TEST_4.getId())).thenReturn(Optional.of(TEST_4));
 		when(repo.save(newNameTEST_4)).thenReturn(newNameTEST_4);
-		assertThat(service.update(TEST_4, TEST_4.getId())).isEqualTo(expectedDTO);
+		assertThat(service.update(mapToDTO(TEST_4), TEST_4.getId())).isEqualTo(expectedDTO);
 		verify(repo, atLeastOnce()).findById(TEST_4.getId());
 		verify(repo, atLeastOnce()).save(newNameTEST_4);
 	}
@@ -89,7 +89,7 @@ public class PlaylistServiceTest {
 	@Test
 	void deleteTest() throws Exception {
 		when(repo.existsById(TEST_5.getId())).thenReturn(false);
-		assertThat(service.delete(TEST_5.getId())).isEqualTo(true);
+		assertThat(service.delete(TEST_5.getId())).isTrue();
 		verify(repo, atLeastOnce()).deleteById(TEST_5.getId());
 		verify(repo, atLeastOnce()).existsById(TEST_5.getId());
 	}

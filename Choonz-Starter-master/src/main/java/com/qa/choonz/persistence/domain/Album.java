@@ -15,13 +15,14 @@ import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Data
 @NoArgsConstructor
-
+@AllArgsConstructor
 public class Album {
 
 	@Id
@@ -44,17 +45,6 @@ public class Album {
 	private Genre genre;
 
 	private String cover;
-
-	public Album(long id, @NotNull @Size(max = 100) String name, List<Track> tracks, Artist artist, Genre genre,
-			String cover) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.tracks = tracks;
-		this.artist = artist;
-		this.genre = genre;
-		this.cover = cover;
-	}
 
 	public Album(@NotNull @Size(max = 100) String name, List<Track> tracks, Artist artist, Genre genre, String cover) {
 		super();
