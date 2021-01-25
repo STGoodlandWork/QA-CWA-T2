@@ -14,12 +14,14 @@ import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class Playlist {
 
 	@Id
@@ -75,11 +77,6 @@ public class Playlist {
 	public Playlist(Long id, @NotNull @Size(max = 100) String name) {
 		super();
 		this.id = id;
-		this.name = name;
-	}
-
-	public Playlist(@NotNull @Size(max = 100) String name) {
-		super();
 		this.name = name;
 	}
 

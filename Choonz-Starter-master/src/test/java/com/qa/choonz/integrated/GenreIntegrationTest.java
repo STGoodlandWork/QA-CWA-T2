@@ -28,7 +28,7 @@ import com.qa.choonz.rest.dto.GenreDTO;
 @AutoConfigureMockMvc
 @Sql(scripts = { "classpath:task-schema.sql",
 		"classpath:testdata.sql" }, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
-public class GenreIntegrationTest {
+class GenreIntegrationTest {
 
 	@Autowired
 	private MockMvc mvc;

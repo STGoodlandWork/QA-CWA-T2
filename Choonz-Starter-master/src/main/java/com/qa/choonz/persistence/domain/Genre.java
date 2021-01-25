@@ -14,12 +14,14 @@ import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class Genre {
 
 	@Id
@@ -38,15 +40,6 @@ public class Genre {
 	@OneToMany(mappedBy = "genre", cascade = CascadeType.ALL)
 	@JsonIgnore
 	private List<Album> albums;
-
-	public Genre(Long id, @NotNull @Size(max = 100) String name, @NotNull @Size(max = 250) String description,
-			List<Album> albums) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.description = description;
-		this.albums = albums;
-	}
 
 	public Genre(@NotNull @Size(max = 100) String name, @NotNull @Size(max = 250) String description,
 			List<Album> albums) {

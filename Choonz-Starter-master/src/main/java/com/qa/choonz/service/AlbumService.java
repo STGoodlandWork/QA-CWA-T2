@@ -29,8 +29,7 @@ public class AlbumService {
 	}
 
 	public AlbumDTO create(Album album) {
-		Album created = this.repo.save(album);
-		return this.mapToDTO(created);
+		return this.mapToDTO(this.repo.save(album));
 	}
 
 	public List<AlbumDTO> read() {
@@ -42,7 +41,7 @@ public class AlbumService {
 		return this.mapToDTO(found);
 	}
 
-	public AlbumDTO update(Album album, long id) {
+	public AlbumDTO update(AlbumDTO album, Long id) {
 		Album toUpdate = this.repo.findById(id).orElseThrow(AlbumNotFoundException::new);
 		toUpdate.setName(album.getName());
 		toUpdate.setArtist(album.getArtist());

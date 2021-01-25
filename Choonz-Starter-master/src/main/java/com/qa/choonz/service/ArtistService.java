@@ -47,7 +47,7 @@ public class ArtistService {
 	}
 
 	// Update
-	public ArtistDTO update(Artist aDTO, long id) {
+	public ArtistDTO update(ArtistDTO aDTO, long id) {
 		Artist toUpdate = this.repo.findById(id).orElseThrow(ArtistNotFoundException::new);
 		toUpdate.setName(aDTO.getName());
 		SpringBeanUtil.mergeNotNull(aDTO, toUpdate);

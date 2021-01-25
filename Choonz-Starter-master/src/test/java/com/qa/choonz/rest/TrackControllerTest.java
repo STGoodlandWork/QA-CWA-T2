@@ -23,7 +23,7 @@ import com.qa.choonz.rest.dto.TrackDTO;
 import com.qa.choonz.service.TrackService;
 
 @SpringBootTest
-public class TrackControllerTest {
+class TrackControllerTest {
 
 	@Autowired
 	private TrackController controller;
@@ -38,12 +38,12 @@ public class TrackControllerTest {
 		return this.mapper.map(track, TrackDTO.class);
 	}
 
-	private final Track TEST_1 = new Track(1l, "Good Days", null, null, null, 120, "Laurem Epsom", null);
-	private final Track TEST_2 = new Track(2l, "We Hate Git", null, null, null, 120, "Laurem Epsom", null);
-	private final Track TEST_3 = new Track(3l, "Git GUI's FTW", null, null, null, 120, "Laurem Epsom", null);
-	private final Track TEST_4 = new Track(4l, "git push -f saved my life", null, null, null, 120, "Laurem Epsom",
-			null);
-	private final Track TEST_5 = new Track(5l, "Great Days", null, null, null, 120, "Laurem Epsom", null);
+	private final Track TEST_1 = new Track(1l, "Good Days", null, null, null, null, 120, "Laurem Epsom");
+	private final Track TEST_2 = new Track(2l, "We Hate Git", null, null, null, null, 120, "Laurem Epsom");
+	private final Track TEST_3 = new Track(3l, "Git GUI's FTW", null, null, null, null, 120, "Laurem Epsom");
+	private final Track TEST_4 = new Track(4l, "git push -f saved my life", null, null, null, null, 120,
+			"Laurem Epsom");
+	private final Track TEST_5 = new Track(5l, "Great Days", null, null, null, null, 120, "Laurem Epsom");
 
 	private List<Track> LISTOFTRACKS;
 
@@ -81,9 +81,9 @@ public class TrackControllerTest {
 	// Update
 	@Test
 	void updateTest() throws Exception {
-		when(this.service.update(TEST_2, TEST_2.getId())).thenReturn(this.mapToDTO(TEST_2));
+		when(this.service.update(mapToDTO(TEST_2), TEST_2.getId())).thenReturn(this.mapToDTO(TEST_2));
 		assertThat(new ResponseEntity<TrackDTO>(this.mapToDTO(TEST_2), HttpStatus.ACCEPTED))
-				.isEqualTo(this.controller.update(TEST_2, TEST_2.getId()));
+				.isEqualTo(this.controller.update(mapToDTO(TEST_2), TEST_2.getId()));
 	}
 
 	// Delete

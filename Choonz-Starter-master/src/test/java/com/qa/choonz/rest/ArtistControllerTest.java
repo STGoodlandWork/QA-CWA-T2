@@ -23,7 +23,7 @@ import com.qa.choonz.rest.dto.ArtistDTO;
 import com.qa.choonz.service.ArtistService;
 
 @SpringBootTest
-public class ArtistControllerTest {
+class ArtistControllerTest {
 
 	@Autowired
 	private ArtistController controller;
@@ -80,9 +80,9 @@ public class ArtistControllerTest {
 	// Update
 	@Test
 	void updateTest() throws Exception {
-		when(this.service.update(TEST_2, TEST_2.getId())).thenReturn(this.mapToDTO(TEST_2));
+		when(this.service.update(mapToDTO(TEST_2), TEST_2.getId())).thenReturn(this.mapToDTO(TEST_2));
 		assertThat(new ResponseEntity<ArtistDTO>(this.mapToDTO(TEST_2), HttpStatus.ACCEPTED))
-				.isEqualTo(this.controller.update(TEST_2, TEST_2.getId()));
+				.isEqualTo(this.controller.update(mapToDTO(TEST_2), TEST_2.getId()));
 	}
 
 	// Delete

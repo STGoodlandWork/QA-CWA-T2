@@ -21,7 +21,7 @@ import com.qa.choonz.rest.dto.AlbumDTO;
 
 @SpringBootTest
 
-public class AlbumServiceTest {
+class AlbumServiceTest {
 
 	@Autowired
 	private AlbumService service;
@@ -76,7 +76,7 @@ public class AlbumServiceTest {
 		AlbumDTO expectedDTO = mapToDTO(updatedAlbum);
 		when(repo.findById(test_album.getId())).thenReturn(Optional.of(test_album));
 		when(repo.save(updatedAlbum)).thenReturn(updatedAlbum);
-		assertThat(service.update(test_album, test_album.getId())).isEqualTo(expectedDTO);
+		assertThat(service.update(mapToDTO(test_album), test_album.getId())).isEqualTo(expectedDTO);
 		verify(repo, atLeastOnce()).findById(test_album.getId());
 		verify(repo, atLeastOnce()).save(updatedAlbum);
 
@@ -86,7 +86,7 @@ public class AlbumServiceTest {
 	void deleteSuccessTest() throws Exception {
 		Long id = 1L;
 		when(this.repo.existsById(id)).thenReturn(false);
-		assertThat(this.service.delete(id)).isEqualTo(true);
+		assertThat(this.service.delete(id)).isTrue();
 		verify(this.repo, atLeastOnce()).existsById(id);
 	}
 
@@ -94,7 +94,7 @@ public class AlbumServiceTest {
 	void deleteFailureTest() throws Exception {
 		Long id = 1L;
 		when(this.repo.existsById(id)).thenReturn(true);
-		assertThat(this.service.delete(id)).isEqualTo(false);
+		assertThat(this.service.delete(id)).isFalse();
 		verify(this.repo, atLeastOnce()).existsById(id);
 	}
 

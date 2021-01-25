@@ -28,7 +28,8 @@ import com.qa.choonz.rest.dto.ArtistDTO;
 @AutoConfigureMockMvc
 @Sql(scripts = { "classpath:task-schema.sql",
 		"classpath:testdata.sql" }, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
-public class ArtistIntegrationTest {
+class ArtistIntegrationTest {
+
 	@Autowired
 	private MockMvc mvc;
 
