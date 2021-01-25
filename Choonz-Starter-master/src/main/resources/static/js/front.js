@@ -37,5 +37,4 @@ async function searchAllTables(searchName) {
     let result = `${data_i}<br>`;
     results.push(result);
   }
-  div.innerHTML = results.join("");
 }
