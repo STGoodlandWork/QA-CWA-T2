@@ -105,12 +105,11 @@ function createCard(data) {
   tempString += '<div class="card-header">Tracks</div>';
   tempString += '<div class="card-body">';
   tempString += '<h5 class="card-title">' + data.name + "</h5>";
+  tempString += '<button type="button" class="btn btn-warning">Update</button>';
   tempString +=
-    '<button type="button" class="btn btn-warning">Warning</button>';
-  tempString +=
-    "<button type = 'button' class='btn btn-danger data-id='" +
+    "<button type = 'button' class='btn btn-danger' data-id='" +
     data.id +
-    "' class='delete' onclick='deletePlaylist(" +
+    "' class='delete' onclick='deleteGenre(" +
     data.id +
     ")'> Delete</button>";
   tempString += " </div>";
