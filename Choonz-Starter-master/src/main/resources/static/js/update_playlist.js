@@ -1,12 +1,12 @@
-//var albumName = sessionStorage.getItem("name");
-var albumName = "We Shall All Be Healed"
-var albumid
+var playlistName = sessionStorage.getItem("name");
 
-getData(albumName);
+var playlistid
+
+getData(playlistName);
 
 
  function getData(id){
-    fetch('http://localhost:8082/album/search/'+id)
+    fetch('http://localhost:8082/playlist/search/'+id)
       .then(
         function(response) {
           if (response.status !== 200) {
@@ -21,10 +21,9 @@ getData(albumName);
             console.log("MY DATA OBJ",data)
 
              document.querySelector("input#name").value = data[0].name
-             document.querySelector("input#artist").value = data[0].artist.id
-             document.querySelector("input#genre").value = data[0].genre.id
-             document.querySelector("input#img").value = data[0].cover
-             albumid = data[0].id
+             document.querySelector("input#description").value = data[0].description
+             document.querySelector("input#img").value = data[0].artwork
+             playlistid = data[0].id
              
              
              
@@ -48,34 +47,28 @@ getData(albumName);
     
     
     let name=formElements["name"].value;
-    let artist =formElements["artist"].value;
-    let genre =formElements["genre"].value;
+    let description =formElements["description"].value;
     let img =formElements["img"].value;
     
 
   let data = {
     "name":name,
-      "artist":{
-          "id":artist
-      },
-      "genre":{
-          "id":genre
-      },
-      "cover":img
+     "description":description,
+     "img":img
     }
       
       
-    id = albumid
+    id = playlistid
     console.log("Data to post",data)
-    console.log(albumid)
+    
 
-    sendData(data,albumid)
+    sendData(data,playlistid)
    
   });
 
 
   function sendData(data,id){
-    fetch("http://localhost:8082/album/update/"+id, {
+    fetch("http://localhost:8082/playlist/update/"+id, {
         method: 'put',
         headers: {
           "Content-type": "application/json; charset=UTF-8"
@@ -200,8 +193,3 @@ function getTrackData(jsondata){
       
     
   }
-
-  
-        
-        
-  

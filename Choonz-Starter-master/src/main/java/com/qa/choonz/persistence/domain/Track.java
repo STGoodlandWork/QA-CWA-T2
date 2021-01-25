@@ -10,12 +10,14 @@ import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 @Data
 @NoArgsConstructor
@@ -31,19 +33,15 @@ public class Track {
 	@Column(unique = true)
 	private String title;
 
-	@JsonIgnore
 	@OneToOne
 	private Artist artist;
 
-	@JsonIgnore
 	@OneToOne
 	private Genre genre;
 
-	@JsonIgnore
 	@ManyToOne
 	private Album album;
 
-	@JsonIgnore
 	@ManyToOne
 	private Playlist playlist;
 
