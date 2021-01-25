@@ -152,18 +152,9 @@ function getTrackData(jsondata){
               let myDelButton = document.createElement("button");
               let myButtonValue1 = document.createTextNode("Delete")
                myDelButton.className ="btn btn-danger pull-right";
-               myDelButton.onclick = function(){
-               
-                    fetch("http://localhost:8082/track/delete/"+commentRecord.id, {
-                        method: 'delete',
-                        headers: {
-                          "Content-type": "application/json; charset=UTF-8"
-                        },
-                      })
-                      window.location.reload();
-                      
-                      
-                    }
+               myDelButton.onclick = function() {
+               updateTrackList(commentRecord.id, 2);
+               }
                
                myDelButton.appendChild(myButtonValue1);
                newCellDelete.appendChild(myDelButton)
@@ -177,9 +168,11 @@ function getTrackData(jsondata){
   function addSong() {
    
     let songid = document.getElementById('song').value;
-    getTrack(songid);
+    updateTrackList(songid, playlistid);
+  }
 
-   function getTrack(songid) {
+
+   function updateTrackList(songid, flag) {
     fetch('http://localhost:8082/track/read/'+songid)
       .then(
         function(response) {
@@ -200,7 +193,8 @@ function getTrackData(jsondata){
              artist = data.artist.id
              genre = data.genre.id
              album = data.album.id
-             playlist = playlistid
+             console.log("flag" ,flag)
+             playlist = flag
 
              let jsondata = {
               "title": title,
@@ -216,7 +210,7 @@ function getTrackData(jsondata){
                 "id": album
               },
               "playlist": {
-                "id": playlistid
+                "id": playlist
               }
             }
             sendData(jsondata,songid);
@@ -259,4 +253,4 @@ function getTrackData(jsondata){
     
     
     } 
-  }
+  
