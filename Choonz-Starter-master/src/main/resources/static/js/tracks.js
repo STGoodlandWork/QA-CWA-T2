@@ -85,7 +85,7 @@ async function searchTrack(trackName) {
 
 //Read All Function Fetch Request
 
-function readAllTrack(){
+function readAllTrack() {
 
 fetch('http://localhost:8082/track/read')
   .then(
