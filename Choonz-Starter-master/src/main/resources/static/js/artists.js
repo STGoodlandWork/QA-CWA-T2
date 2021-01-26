@@ -75,12 +75,13 @@ readAllArtist();
 function createArtistCard(data){
 
   let myDiv = document.querySelector("#ArtistDisplay");
+  let name = document.querySelector("#name")
   
   let tempString = '<div class="card text-white bg-dark mb-3 inlineCard" style="max-width: 18rem;">';
       tempString +='<div class="card-header">Artist</div>';
       tempString += '<div class="card-body">';
       tempString +=  '<h5 class="card-title">' + data.name + '</h5>';
-      tempString += '<button type="button" class="btn btn-warning">Update</button>';
+      tempString += '<button type="button" class="btn btn-warning" onlick="myFunction()" >Update</button>';
       tempString += '<button type="button" class="btn btn-danger">Delete</button>'
       tempString +=' </div>';
       tempString += '</div>';
@@ -105,4 +106,11 @@ function deleteArtist(id){
       console.log('Request failed', error);
     });
     
+}
+
+function myFunction(){
+
+  sessionStorage.setItem("name", data.name);
+  console.log(data.name);
+
 }
