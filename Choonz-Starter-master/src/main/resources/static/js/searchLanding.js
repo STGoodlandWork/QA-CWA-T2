@@ -9,7 +9,7 @@ for(let param of params ){
 
 
 function getData(id){
-    fetch('http://localhost:8082/playlist/read/'+id)
+    fetch('http://localhost:8082/search/'+id)
       .then(
         function(response) {
           if (response.status !== 200) {
@@ -22,14 +22,9 @@ function getData(id){
              console.log("MY DATA OBJ",data)
              
            
-             var name = document.getElementById("img");
-             name.querySelector("p").innerHTML = data.artwork;
              
-             var name = document.getElementById("name");
-             name.querySelector("p").innerHTML = data.name;
-
-             var name = document.getElementById("description");
-             name.querySelector("p").innerHTML = data.description;
+             
+             
 
              
 
@@ -37,23 +32,10 @@ function getData(id){
             
              
 
-             trackduration = data.tracks;
-             let result = 0;
-
-             trackduration.forEach(element => {
-
-                result +=  element.duration 
-              
-                 
-             });
-             result = result/60
-             result = Math.floor(result)
-             var name = document.getElementById("playtime");
-             name.querySelector("p").innerHTML = result + " Minutes";
-
+            
 
              
-             trackdata = data.tracks
+             trackdata = data
              
 
              let trackTable = document.querySelector("table");
@@ -83,19 +65,16 @@ function getData(id){
          
             
              let th = document.createElement("th");
-             let text = document.createTextNode("Title");
+             let text = document.createTextNode("Type");
              th.appendChild(text);
              row.appendChild(th)
  
              let th2 = document.createElement("th");
-             let text2 = document.createTextNode("Artist");
+             let text2 = document.createTextNode("name");
              th2.appendChild(text2);
              row.appendChild(th2)
 
-             let th3 = document.createElement("th");
-             let text3 = document.createTextNode("Duration (minutes)");
-             th3.appendChild(text3);
-             row.appendChild(th3)
+            
            
          }
 
@@ -104,22 +83,17 @@ function getData(id){
           let row = table.insertRow();
             for(let values in commentRecord){
               
-                if(values == "title" || values == "duration" || values == "artist" ){
+                if(values == "title" ||  values == "artist" ){
               let cell = row.insertCell();
-              if(values == "duration") {
-                 
-                let text = document.createTextNode((commentRecord[values]/60) );
-                cell.appendChild(text);
-
-              }
-              if(values == "artist") {
+              
+              if(values == "name") {
                  
                 console.log(commentRecord[values].name)
                 let text = document.createTextNode(commentRecord[values].name );
                 cell.appendChild(text);
 
               }
-                let text = document.createTextNode(commentRecord[values] );
+                let text = document.createTextNode("Track" );
                 cell.appendChild(text);
               
             }
