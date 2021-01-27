@@ -9,7 +9,7 @@ for(let param of params ){
 
 
 function getData(id){
-    fetch('http://localhost:8082/artist/read/'+id)
+    fetch('http://localhost:8082/album/read/'+id)
       .then(
         function(response) {
           if (response.status !== 200) {
@@ -21,20 +21,44 @@ function getData(id){
           response.json().then(function(data) {
              console.log("MY DATA OBJ",data)
              
+             var name = document.getElementById("img");
+             name.querySelector("p").innerHTML = data.cover;
            
-             var name = document.getElementById("ArtistDisplay");
+             var name = document.getElementById("title");
              name.querySelector("p").innerHTML = data.name;
+             
+             var name = document.getElementById("artist");
+             name.querySelector("p").innerHTML = data.artist.name;
+
+             var name = document.getElementById("genre");
+             name.querySelector("p").innerHTML = data.genre.name;
+
+             
+             trackduration = data.tracks;
+             let result = 0;
+
+             trackduration.forEach(element => {
+
+                result +=  element.duration 
+              
+                 
+             });
+             result = result/60
+             result = Math.floor(result)
+             var name = document.getElementById("playtime");
+             name.querySelector("p").innerHTML = result + " Minutes";
+
+
+             
              trackdata = data.tracks
-             albumdata = data.albums
+             
 
              let trackTable = document.querySelector("table");
-             let albumTable = document.getElementById("album")
+            
              
              TrackCreateTableHead(trackTable);
              createTableBody(trackTable,trackdata);
-             
-             AlbumCreateTableHead(albumTable)
-             createTableBody(albumTable,albumdata)
+            
 
 
 
@@ -51,18 +75,7 @@ function getData(id){
     }
 
 
-    function AlbumCreateTableHead(table){
-        let tableHead= table.createTHead();
-          let row = tableHead.insertRow();
-         
-            
-             let th = document.createElement("th");
-             let text = document.createTextNode("Album Name");
-             th.appendChild(text);
-             row.appendChild(th)
-           
-         }
-
+   
     function TrackCreateTableHead(table){
         let tableHead= table.createTHead();
           let row = tableHead.insertRow();
@@ -74,7 +87,7 @@ function getData(id){
              row.appendChild(th)
  
              let th2 = document.createElement("th");
-             let text2 = document.createTextNode("Duration");
+             let text2 = document.createTextNode("Duration (minutes)");
              th2.appendChild(text2);
              row.appendChild(th2)
            
@@ -87,7 +100,13 @@ function getData(id){
               
                 if(values == "title" || values == "duration" || values == "name" ){
               let cell = row.insertCell();
-                let text = document.createTextNode(commentRecord[values]);
+              if(values == "duration") {
+                 
+                let text = document.createTextNode((commentRecord[values]/60) );
+                cell.appendChild(text);
+
+              }
+                let text = document.createTextNode(commentRecord[values] );
                 cell.appendChild(text);
               
             }
