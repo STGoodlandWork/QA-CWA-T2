@@ -69,32 +69,16 @@ readAllArtist();
 
 function createArtistCard(data) {
   let myDiv = document.querySelector("#ArtistDisplay");
-<<<<<<< HEAD
-  
-// myDiv.className = "card text-white bg-dark mb-3 inlineCard"
-// myDiv.setAttribute('style', 'max-width: 18rem;')
-// let header = document.createElement("div")
-// header.className = "card-header" 
-// let text = document.createTextNode(data.name)
-// myDiv.appendChild(text);
-
-      let tempString = '<div class="card text-white bg-dark mb-3 inlineCard" style="max-width: 18rem;">';
-      tempString +='<div class="card-header">Artist</div>';
-      tempString += '<div class="card-body">';
-      tempString +=  '<h5 class="card-title">' + data.name + '</h5>';
-      tempString += '<button type="button" onclick="window.location.href=view_artist?id='+data.id+ '"class="btn btn-warning">Update</button>';
-      tempString += '<button type="button" class="btn btn-danger">Delete</button>'
-      tempString +=' </div>';
-      tempString += '</div>';
-=======
->>>>>>> a6fe74b9fa3705ca33c30e947bfde2a4820446b9
 
   let tempString =
     '<div class="card text-white bg-dark mb-3 inlineCard" style="max-width: 18rem;">';
   tempString += '<div class="card-header">Artist</div>';
   tempString += '<div class="card-body">';
   tempString += '<h5 class="card-title">' + data.name + "</h5>";
-  tempString += '<button type="button" class="btn btn-warning">Update</button>';
+  tempString +=
+    '<button type="button" onclick="window.location.href=view_artist?id=' +
+    data.id +
+    '" class="btn btn-warning">Update</button>';
   tempString +=
     "<button type = 'button' class='btn btn-danger' data-id='" +
     data.id +
