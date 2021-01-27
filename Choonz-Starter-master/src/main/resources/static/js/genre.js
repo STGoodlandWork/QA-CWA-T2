@@ -10,7 +10,10 @@ readAllGenresButton.onclick = async () => {
   await readGenre(genreName);
 };
 
+console.log("Before async");
 async function readGenre(genreName) {
+  console.log("After async");
+
   let response = await fetch(
     `http://localhost:8082/genre/search/${genreName}`,
     {
@@ -67,7 +70,7 @@ function readAllGenres() {
 readAllGenres();
 
 function createCard(data) {
-  let myDiv = document.querySelector("#allGenres");
+  let myDiv = document.querySelector("#GenreDisplay");
 
   let tempString =
     '<div class="card text-white bg-dark mb-3 inlineCard" style="max-width: 18rem;">';
