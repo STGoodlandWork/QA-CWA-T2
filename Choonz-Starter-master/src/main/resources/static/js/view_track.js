@@ -28,6 +28,9 @@ function getData(id){
              var name = document.getElementById("artist");
              name.querySelector("p").innerHTML = data.artist.name;
 
+             var name = document.getElementById("album");
+             name.querySelector("p").innerHTML = data.album.name;
+
              var name = document.getElementById("genre");
              name.querySelector("p").innerHTML = data.genre.name;
 

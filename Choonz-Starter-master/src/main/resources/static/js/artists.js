@@ -77,8 +77,7 @@ function createArtistCard(data) {
   tempString += '<h5 class="card-title">' + data.name + "</h5>";
   tempString += '<button type="button" class="btn btn-warning">Update</button>';
   tempString +=
-    "<button type = 'button' class='btn btn-danger' data-id='" +
-    data.id +
+    "<button type = 'button' class='btn btn-danger' href=update_album.html?= '+ data.id'
     "' class='delete' onclick='deleteArtist(" +
     data.id +
     ")'> Delete</button>";
