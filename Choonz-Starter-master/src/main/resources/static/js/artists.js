@@ -80,8 +80,7 @@ function createArtistCard(data) {
     data.id +
     '" class="btn btn-warning">Update</button>';
   tempString +=
-    "<button type = 'button' class='btn btn-danger' data-id='" +
-    data.id +
+    "<button type = 'button' class='btn btn-danger' href=update_album.html?= '+ data.id'
     "' class='delete' onclick='deleteArtist(" +
     data.id +
     ")'> Delete</button>";
