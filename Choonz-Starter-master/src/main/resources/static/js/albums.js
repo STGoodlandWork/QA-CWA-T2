@@ -30,11 +30,7 @@ async function readAlbum(albumName) {
 
   let data = await response.json();
   console.log(data);
-
-  data.forEach((album) => {
-    console.log(album.name);
-    createCard(album);
-  });
+  window.location.href = "view_album.html?=" + data[0].id;
 }
 
 // ReadAll Function for Albums
@@ -70,17 +66,22 @@ function createCard(data) {
   let trackDiv = document.querySelector("#albumDisplay");
 
   let tempString =
-    '<div class="card text-white bg-dark mb-3 inlineCard" style="max-width: 18rem;">';
+    '<div class="card text-white bg-dark mb-3 inlineCard" style="max-width: 20rem;">';
   tempString += '<div class="card-header">Album</div>';
   tempString += '<div class="card-body">';
   tempString += '<h5 class="card-title">' + data.name + "</h5>";
-  tempString += '<button type="button" class="btn btn-warning">Update</button>';
   tempString +=
-    "<button type = 'button' class='btn btn-danger' data-id='" +
+    '<button type="button" onclick="window.location.href=\'view_album.html?=' +
     data.id +
-    "' class='delete' onclick='deleteAlbum(" +
+    '\';" class="btn btn-success">View</button>';
+  tempString +=
+    '<button type="button" onclick="window.location.href=\'update_album.html?=' +
     data.id +
-    ")'> Delete</button>";
+    '\';" class="btn btn-warning">Update</button>';
+  tempString +=
+    '<button type="button" onclick="deleteAlbum(' +
+    data.id +
+    ')" class="btn btn-danger">Delete</button>';
   tempString += " </div>";
   tempString += "</div>";
 

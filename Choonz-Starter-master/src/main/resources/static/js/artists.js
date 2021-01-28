@@ -32,7 +32,7 @@ async function readArtist(artistName) {
 
   let data = await response.json();
   console.log(data);
-  window.location.href = "view_artist.html?="+data[0].id;
+  window.location.href = "view_artist.html?=" + data[0].id;
 }
 
 //Read All Function Fetch Request
@@ -73,17 +73,17 @@ function createArtistCard(data) {
   tempString += '<div class="card-body">';
   tempString += '<h5 class="card-title">' + data.name + "</h5>";
   tempString +=
-  '<button type="button" onclick="window.location.href=\'view_artist.html?=' +
-  data.id +
-  '\';" class="btn btn-success">View</button>';
+    '<button type="button" onclick="window.location.href=\'view_artist.html?=' +
+    data.id +
+    '\';" class="btn btn-success">View</button>';
   tempString +=
-  '<button type="button" onclick="window.location.href=\'update_artist.html?=' +
-  data.id +
-  '\';" class="btn btn-warning">Update</button>';
+    '<button type="button" onclick="window.location.href=\'update_artist.html?=' +
+    data.id +
+    '\';" class="btn btn-warning">Update</button>';
   tempString +=
-  '<button type="button" onclick="deleteArtist(' +
-  data.id +
-  ')" class="btn btn-danger">Delete</button>';
+    '<button type="button" onclick="deleteArtist(' +
+    data.id +
+    ')" class="btn btn-danger">Delete</button>';
   tempString += " </div>";
   tempString += "</div>";
 
