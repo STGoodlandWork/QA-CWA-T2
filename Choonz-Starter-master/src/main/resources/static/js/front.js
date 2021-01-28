@@ -29,12 +29,8 @@ async function searchAllTables(searchName) {
 
   let data = await response.json();
   console.log(data);
+  window.location.href = "searchLanding.html?="+searchName;
+ 
 
-  let div = document.getElementById("myDiv");
-  let results = [];
-
-  for (let data_i of data) {
-    let result = `${data_i}<br>`;
-    results.push(result);
-  }
+  
 }
