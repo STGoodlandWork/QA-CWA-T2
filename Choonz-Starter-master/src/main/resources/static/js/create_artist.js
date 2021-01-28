@@ -13,8 +13,6 @@ document
     sessionStorage.setItem("name", name);
     console.log("Data to post", data);
     sendData(data);
-
-    // postData(noteTitle,noteBody)
   });
 
 function sendData(data) {

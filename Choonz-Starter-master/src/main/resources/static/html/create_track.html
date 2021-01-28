@@ -15,7 +15,7 @@
     <!-- Navbar 2-->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
 
-        <a href="index.html"><img class="logo" src="../img/logo.png" width="auto" ml-auto height="50"></a>
+        <a href="../index.html"><img class="logo" src="../img/logo.png" width="auto" ml-auto height="50"></a>
 
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
@@ -35,17 +35,19 @@
                     <a class="nav-link" href="playlists.html">Top Playlists</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">Genre</a>
+                    <a class="nav-link" href="genres.html">Genre</a>
                 </li>
-
                 <li class="nav-item">
-                    <a class="nav-link" href="">Login</a>
+                    <a class="nav-link" href="albums.html">Albums</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login.html">Login</a>
                 </li>
 
             </ul>
             <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="text" id="track-input" placeholder="Search">
-                <button class="btn btn-success my-2 my-sm-0" id="searchTrackButton" type="submit">Search</button>
+                <input class="form-control mr-sm-2" type="text" id="search-input" placeholder="Search">
+                <button class="btn btn-success my-2 my-sm-0" id="searchButton" type="submit">Search</button>
             </form>
         </div>
     </nav>
@@ -101,16 +103,15 @@
 
 
 
-
             <br>
             <button type="" class="btn btn-success" id="submitTrackButton" onclick="location.href='tracks.html';"
                 value="update">Submit</button>
-            <button type="button" class="btn btn-secondary" onclick="location.href=document.referrer;"
+            <button type="button" class="btn btn-secondary" onclick="location.href='tracks.html';"
                 value="update">Cancel</button>
         </form>
 
 
-
+        <script src="../js/front.js"></script>
         <script src="../js/create_track.js"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
             integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

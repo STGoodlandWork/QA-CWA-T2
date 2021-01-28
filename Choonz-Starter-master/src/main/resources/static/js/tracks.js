@@ -31,10 +31,7 @@ async function searchTrack(trackName) {
   let data = await response.json();
   console.log(data);
 
-  data.forEach((track) => {
-    console.log(track.title);
-    createCard(track);
-  });
+  window.location.href = "view_track.html?=" + data[0].id;
 }
 
 //Read All Function Fetch Request
@@ -74,13 +71,18 @@ function createCard(data) {
   tempString += '<div class="card-header">Tracks</div>';
   tempString += '<div class="card-body">';
   tempString += '<h5 class="card-title">' + data.title + "</h5>";
-  tempString += '<button type="button" class="btn btn-warning">Update</button>';
   tempString +=
-    "<button type = 'button' class='btn btn-danger' data-id='" +
+    '<button type="button" onclick="window.location.href=\'view_track.html?=' +
     data.id +
-    "' class='delete' onclick='deleteTrack(" +
+    '\';" class="btn btn-success">View</button>';
+  tempString +=
+    '<button type="button" onclick="window.location.href=\'update_track.html?=' +
     data.id +
-    ")'> Delete</button>";
+    '\';" class="btn btn-warning">Update</button>';
+  tempString +=
+    '<button type="button" onclick="deleteTrack(' +
+    data.id +
+    ')" class="btn btn-danger">Delete</button>';
   tempString += " </div>";
   tempString += "</div>";
 

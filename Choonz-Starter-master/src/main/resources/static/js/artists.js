@@ -81,7 +81,7 @@ function createArtistCard(data) {
     data.id +
     '\';" class="btn btn-warning">Update</button>';
   tempString +=
-    '<button type=git "button" onclick="deleteArtist(' +
+    '<button type="button" onclick="deleteArtist(' +
     data.id +
     ')" class="btn btn-danger">Delete</button>';
   tempString += " </div>";
