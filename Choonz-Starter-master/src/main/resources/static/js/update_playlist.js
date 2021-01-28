@@ -1,13 +1,17 @@
-//var playlistName = sessionStorage.getItem("name");
-var playlistName = "Sadbois"
+const params = new URLSearchParams(window.location.search);
+
+for (let param of params) {
+  let id = param[1];
+  console.log(id);
+  getData(id);
+}
 
 var playlistid
 
-getData(playlistName);
 
 
  function getData(id){
-    fetch('http://localhost:8082/playlist/search/'+id)
+    fetch('http://localhost:8082/playlist/read/'+id)
       .then(
         function(response) {
           if (response.status !== 200) {
@@ -21,10 +25,10 @@ getData(playlistName);
            
             console.log("MY DATA OBJ",data)
 
-             document.querySelector("input#name").value = data[0].name
-             document.querySelector("input#description").value = data[0].description
-             document.querySelector("input#img").value = data[0].artwork
-             playlistid = data[0].id
+             document.querySelector("input#name").value = data.name
+             document.querySelector("input#description").value = data.description
+             document.querySelector("input#img").value = data.artwork
+             playlistid = data.id
              
              
              
@@ -93,7 +97,7 @@ getData(playlistName);
 function getTrackData(jsondata){
   
   
-      data = jsondata[0].tracks
+      data = jsondata.tracks
   
           console.log("2",data)
 
@@ -125,14 +129,6 @@ function getTrackData(jsondata){
             row.appendChild(th2)
           
         }
-        // let th2 = document.createElement("th")
-        // let text2 = document.createTextNode("View");
-        // th2.appendChild(text2);
-        // row.appendChild(th2);
-        // let th3 = document.createElement("th")
-        // let text3 = document.createTextNode("Delete");
-        // th3.appendChild(text3);
-        // row.appendChild(th3);
   
     function createTableBody(table,commentData){
         for(let commentRecord of commentData){ 
@@ -150,7 +146,7 @@ function getTrackData(jsondata){
               let myViewButton = document.createElement("a");
               let myButtonValue = document.createTextNode("View")
               myViewButton.className ="btn btn-warning pull-right";
-              myViewButton.href="readOne.html?id="+commentRecord.id;
+              myViewButton.href="view_track.html?id="+commentRecord.id;
               myViewButton.appendChild(myButtonValue);
               newCell.appendChild(myViewButton)
               let newCellDelete = row.insertCell();
@@ -158,7 +154,8 @@ function getTrackData(jsondata){
               let myButtonValue1 = document.createTextNode("Delete")
                myDelButton.className ="btn btn-danger pull-right";
                myDelButton.onclick = function() {
-               updateTrackList(commentRecord.id, 2);
+              
+                updateTrackList(commentRecord.id, null);
                }
                
                myDelButton.appendChild(myButtonValue1);
@@ -238,12 +235,6 @@ function getTrackData(jsondata){
                   console.log('Request failed', error);
                 });
               }
-            
-             
-             
-             
-             
-            
             
              
     

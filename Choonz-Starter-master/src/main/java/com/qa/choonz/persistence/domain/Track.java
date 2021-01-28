@@ -1,5 +1,6 @@
 package com.qa.choonz.persistence.domain;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -42,7 +43,7 @@ public class Track {
 	@ManyToOne
 	private Album album;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Playlist playlist;
 
 	// in seconds

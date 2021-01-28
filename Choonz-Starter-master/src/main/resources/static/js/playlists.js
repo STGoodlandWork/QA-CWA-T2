@@ -70,21 +70,26 @@ function createCard(data) {
   let myDiv = document.querySelector("#allPlaylist");
 
   let tempString =
-    '<div class="card text-white bg-dark mb-3 inlineCard" style="max-width: 18rem;">';
-  tempString += '<div class="card-header">Tracks</div>';
-  tempString += '<div class="card-body">';
-  tempString += '<h5 class="card-title">' + data.name + "</h5>";
-  tempString += '<button type="button" class="btn btn-warning">Update</button>';
-  tempString +=
-    "<button type = 'button' class='btn btn-danger' data-id='" +
-    data.id +
-    "' class='delete' onclick='deletePlaylist(" +
-    data.id +
-    ")'> Delete</button>";
-  tempString += " </div>";
-  tempString += "</div>";
+  '<div class="card text-white bg-dark mb-3 inlineCard" style="max-width: 20rem;">';
+tempString += '<div class="card-header">Artist</div>';
+tempString += '<div class="card-body">';
+tempString += '<h5 class="card-title">' + data.name + "</h5>";
+tempString +=
+  '<button type="button" onclick="window.location.href=\'view_playlist.html?=' +
+  data.id +
+  '\';" class="btn btn-success">View</button>';
+tempString +=
+  '<button type="button" onclick="window.location.href=\'update_playlist.html?=' +
+  data.id +
+  '\';" class="btn btn-warning">Update</button>';
+tempString +=
+  '<button type="button" onclick="deletePlaylist(' +
+  data.id +
+  ')" class="btn btn-danger">Delete</button>';
+tempString += " </div>";
+tempString += "</div>";
 
-  myDiv.innerHTML += tempString;
+myDiv.innerHTML += tempString;
 }
 
 function deletePlaylist(id) {

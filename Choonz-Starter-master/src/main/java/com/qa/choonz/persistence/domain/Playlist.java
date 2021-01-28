@@ -28,17 +28,14 @@ public class Playlist {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotNull
 	@Size(max = 100)
 	@Column(unique = true)
 	private String name;
 
-	@NotNull
 	@Size(max = 500)
 	@Column(unique = true)
 	private String description;
 
-	@NotNull
 	@Size(max = 1000)
 	@Column(unique = true)
 	private String artwork;
