@@ -14,21 +14,21 @@ document
     let playlist = formElements["playlist"].value;
 
     let data = {
-      title: title,
-      lyrics: lyrics,
-      duration: duration,
-      artist: {
-        id: artist,
-      },
-      genre: {
-        id: genre,
-      },
-      album: {
-        id: album,
-      },
-      playlist: {
-        id: playlist,
-      },
+      "title": title,
+        "lyrics": lyrics,
+        "duration": duration,
+        "artist": {
+          "id": artist,
+        },
+        "genre": {
+          "id": genre,
+        },
+        "album": {
+          "id": album,
+        },
+        "playlist": {
+          "id": playlist,
+        },
     };
     sessionStorage.setItem("title", title);
     console.log("Data to post", data);
