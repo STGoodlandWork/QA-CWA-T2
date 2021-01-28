@@ -26,8 +26,9 @@ getData(id);
 
              document.querySelector("input#name").value = data.name
              
+             album = data.album.id
              
-             artistid = data.id
+             tracks = data.tracks.id
              
              
              
@@ -54,7 +55,10 @@ getData(id);
     
 
     let data = {
-        "name": name,
+        
+            "name": name,
+              
+          
         
     }
       
