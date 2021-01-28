@@ -21,29 +21,22 @@ function getData(id){
           response.json().then(function(data) {
              console.log("MY DATA OBJ",data)
              
-           
-             
-             
-             
-
-             
-
-             
-            
-             
-
             
 
+             if(Object.keys(data).length == 0 ) {
+              var name = document.getElementById("search");
+              name.querySelector("h3").innerHTML = "No search results found for: " + id;
+             }
+             else{
              
-             trackdata = data
-             
+             var name = document.getElementById("search");
+             name.querySelector("h3").innerHTML = "Search results for: " + id;
 
-             let trackTable = document.querySelector("table");
+             let table = document.querySelector("table");
             
-             
-             TrackCreateTableHead(trackTable);
-             createTableBody(trackTable,trackdata);
-            
+             TrackCreateTableHead(table);
+             createTableBody(table,data);
+             }
 
 
 
@@ -69,10 +62,7 @@ function getData(id){
              th.appendChild(text);
              row.appendChild(th)
  
-             let th2 = document.createElement("th");
-             let text2 = document.createTextNode("name");
-             th2.appendChild(text2);
-             row.appendChild(th2)
+           
 
             
            
@@ -81,35 +71,80 @@ function getData(id){
     function createTableBody(table,commentData){
         for(let commentRecord of commentData){ 
           let row = table.insertRow();
-            for(let values in commentRecord){
+           
               
-                if(values == "title" ||  values == "artist" ){
-              let cell = row.insertCell();
-              
-              if(values == "name") {
+              if (commentRecord.hasOwnProperty('title')){
+                type = "Track"
+                insertType(type)
+                source = "view_track.html?id="
+                createButton(source)
+
+                
+              }
+            
+              else if(commentRecord.hasOwnProperty('cover')) {
                  
-                console.log(commentRecord[values].name)
-                let text = document.createTextNode(commentRecord[values].name );
-                cell.appendChild(text);
+                
+                type = "Album"
+                insertType(type)
+                source = "view_album.html?id="
+                createButton(source)
 
               }
-                let text = document.createTextNode("Track" );
+              else if(commentRecord.hasOwnProperty('artwork')) {
+                 
+                
+                type = "Playlist"
+                insertType(type)
+                source = "view_playlist.html?id="
+                createButton(source)
+
+              }
+              else if(commentRecord.hasOwnProperty('description')) {
+                 
+                
+                type = "Genre"
+                insertType(type)
+                source = "view_genre.html?id="
+                createButton(source)
+              }
+              else{
+                 
+                
+                type = "Artist"
+                insertType(type)
+                source = "view_artist.html?id="
+                createButton(source)
+
+              }
+
+              function insertType(type) {
+                let cell = row.insertCell();
+                let text = document.createTextNode(type);
                 cell.appendChild(text);
-              
-            }
-            }
-              let newCell = row.insertCell();
+              }
+
+              function createButton(source) {
+
+                let newCell = row.insertCell();
               let myViewButton = document.createElement("a");
               let myButtonValue = document.createTextNode("View")
               myViewButton.className ="btn btn-warning pull-right";
-              myViewButton.href="readOne.html?id="+commentRecord.id;
+              myViewButton.href=source+commentRecord.id;
               myViewButton.appendChild(myButtonValue);
               newCell.appendChild(myViewButton)
+              }
+               
+              
+            
+            
+              
+            }
              
          }      
 
 
-    }
+    
 
 
             
