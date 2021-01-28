@@ -54,16 +54,21 @@ getData(playlistName);
 
   let data = {
     "name":name,
-     "description":description,
-     "img":img
+      "artist":{
+          "id":artist
+      },
+      "genre":{
+          "id":genre
+      },
+      "cover":img
     }
       
       
-    id = playlistid
+    id = albumid
     console.log("Data to post",data)
-    
+    console.log(albumid)
 
-    sendData(data,playlistid)
+    sendData(data,albumid)
    
   });
 

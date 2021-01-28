@@ -12,12 +12,12 @@
 </head>
 
 <style>
-    .inlineCard {
+.inlineCard {
 
-        display: inline-block;
-        min-height: 100px;
-        max-height: 15rem;
-        margin: 0.4rem
+    display: inline-block;
+    min-height: 100px;
+    max-height: 15rem;
+    margin: 0.4rem
     }
 </style>
 
@@ -46,13 +46,11 @@
                     <a class="nav-link" href="playlists.html">Top Playlists</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="genres.html">Genre</a>
+                    <a class="nav-link" href="">Genre</a>
                 </li>
+
                 <li class="nav-item">
-                    <a class="nav-link" href="albums.html">Albums</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="login.html">Login</a>
+                    <a class="nav-link" href="">Login</a>
                 </li>
 
             </ul>
@@ -89,19 +87,17 @@
 
         </div>
 
-
-
     </div>
 
-    </div>
+
     <!--CRUD Buttons-->
-    <button type="button" class="btn btn-outline-success" id="createGenreButton"
-        onclick="location.href='create_genre.html';">Create</button>
+    <a href="create_genre.html"><button type="button" class="btn btn-outline-success" id="createGenreButton">Create</button></a>
     <button type="button" class="btn btn-outline-info" onclick="toggleReadOne()">Read</button>
-    <button type="button" class="btn btn-outline-warning" onclick="location.href='update_genre.html';">Update</button>
+    <button type="button" class="btn btn-outline-warning">Update</button>
     <button type="button" class="btn btn-outline-danger">Delete</button>
 
-    </div>
+
+
 
 
     <div id="toggleReadOne" style="display: none; max-width: 400px;">
@@ -110,17 +106,41 @@
     </div>
 
 
-    <br><br>
 
+    <!--/User Details-->
+
+    <!--Genre Display-->
     <div id="GenreDisplay">
 
+        
 
+
+    </div>
+    <!--Hard coded cards for demo (Delete once complete)-->
+
+
+
+
+
+
+
+
+
+    <!--/main -->
+
+
+
+    <div id="allGenres">
+        
 
 
 
 
     </div>
+    <!--Hard coded cards for demo (Delete once complete)-->
 
+    <!--/main -->
+    
 
     <script>
         function toggleReadOne() {
@@ -132,8 +152,9 @@
             }
         }
     </script>
-    <script src="../js/genre.js"></script>
-    <script src="../js/front.js"></script>
+    <script src="js/genre.js"></script>
+    <script src="js/front.js"></script>
+
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

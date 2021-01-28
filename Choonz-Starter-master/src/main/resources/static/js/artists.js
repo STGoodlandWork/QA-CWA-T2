@@ -105,3 +105,10 @@ function deleteArtist(id) {
       console.log("Request failed", error);
     });
 }
+
+function myFunction(){
+
+  sessionStorage.setItem("name", data.name);
+  console.log(data.name);
+
+}
