@@ -6,7 +6,7 @@ for(let param of params ){
     console.log(id);
     getData(id)
 }
-getData(id);
+
 
 
  function getData(id){

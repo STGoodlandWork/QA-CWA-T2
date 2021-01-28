@@ -96,10 +96,16 @@ function getData(id){
               let myViewButton = document.createElement("a");
               let myButtonValue = document.createTextNode("View")
               myViewButton.className ="btn btn-warning pull-right";
-              myViewButton.href="readOne.html?id="+commentRecord.id;
+              if (commentRecord.hasOwnProperty('title')){
+                myViewButton.href="view_track.html?id="+commentRecord.id;
+                myViewButton.appendChild(myButtonValue);
+              newCell.appendChild(myViewButton)
+              }
+              else {
+              myViewButton.href="view_album.html?id="+commentRecord.id;
               myViewButton.appendChild(myButtonValue);
               newCell.appendChild(myViewButton)
-             
+              }
          }      
 
 
