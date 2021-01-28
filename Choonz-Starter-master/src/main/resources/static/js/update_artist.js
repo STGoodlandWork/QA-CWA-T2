@@ -6,7 +6,7 @@ for(let param of params ){
     console.log(id);
     getData(id)
 }
-getData(id);
+
 
 
  function getData(id){
@@ -23,12 +23,12 @@ getData(id);
              
            
             console.log("MY DATA OBJ",data)
-
+            artistId = id
              document.querySelector("input#name").value = data.name
              
-             album = data.album.id
+            
              
-             tracks = data.tracks.id
+            
              
              
              
@@ -51,7 +51,7 @@ getData(id);
     
     
     let name=formElements["name"].value;
-    
+    console.log("name",name)
     
 
     let data = {
@@ -67,7 +67,7 @@ getData(id);
     console.log("Data to post",data)
    
 
-    sendData(data,artistid)
+    sendData(data,artistId)
    
   });
 
