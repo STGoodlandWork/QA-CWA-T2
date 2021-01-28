@@ -141,19 +141,88 @@ function getTrackData(jsondata) {
   }
 }
 function addSong() {
-  let id = formElements["song"].value;
-
-  fetch("http://localhost:9092/track/update/" + id, {
-    method: "put",
-    headers: {
-      "Content-type": "application/json; charset=UTF-8",
-    },
-    body: JSON.stringify(data),
-  })
-    .then(function (data) {
-      console.log("Request succeeded with JSON response", data);
-    })
-    .catch(function (error) {
-      console.log("Request failed", error);
-    });
+   
+  let songid = document.getElementById('song').value;
+  updateTrackList(songid, albumid);
 }
+
+function updateTrackList(songid, flag) {
+   
+    fetch('http://localhost:8082/track/read/'+songid)
+      .then(
+        function(response) {
+          if (response.status !== 200) {
+            console.log('Looks like there was a problem. Status Code: ' +
+              response.status);
+            return;
+          }
+          // Examine the text in the response
+          response.json().then(function(data) {
+             
+           
+            console.log("MY DATA OBJ",data)
+
+             title = data.title
+             lyrics = data.lyrics
+             duration = data.duration
+             artist = data.artist.id
+             genre = data.genre.id
+             album = flag
+             console.log("flag" ,flag)
+             playlist = data.playlist.id
+
+             let jsondata = {
+              "title": title,
+              "lyrics": lyrics,
+              "duration": duration,
+              "artist": {
+                "id": artist
+              },
+              "genre": {
+                "id": genre
+              },
+              "album": {
+                "id": album
+              },
+              "playlist": {
+                "id": playlist
+              }
+            }
+            sendData(jsondata,songid);
+
+             
+             
+             function sendData(data,id){
+              fetch("http://localhost:8082/track/update/"+id, {
+                  method: 'put',
+                  headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                  },
+                  body:JSON.stringify(data)
+                })
+                .then(function (data) {
+                  console.log('Request succeeded with JSON response', data);
+                  window.location.reload();
+                })
+                .catch(function (error) {
+                  console.log('Request failed', error);
+                });
+              }
+            
+             
+             
+             
+             
+            
+            
+             
+    
+          });
+        }
+      )
+      .catch(function(err) {
+        console.log('Fetch Error :-S', err);
+      });
+    }
+    
+    
