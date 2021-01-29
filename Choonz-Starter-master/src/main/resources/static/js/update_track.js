@@ -5,7 +5,7 @@ for (let param of params) {
   console.log(id);
   getData(id);
 }
-getData(id);
+
 
 function getData(id) {
   fetch("http://localhost:8082/track/read/" + id)
@@ -21,11 +21,12 @@ function getData(id) {
         console.log("MY DATA OBJ", data);
 
         document.querySelector("input#title").value = data.title;
-        document.querySelector("input#artist").value = data.artist;
-        document.querySelector("input#album").value = data.album;
-        document.querySelector("input#genre").value = data.genre;
-        document.querySelector("input#playtime").value = data.playtime;
+        document.querySelector("input#artist").value = data.artist.id;
+        document.querySelector("input#album").value = data.album.id;
+        document.querySelector("input#genre").value = data.genre.id;
+        document.querySelector("input#playtime").value = data.duration;
         document.querySelector("input#lyrics").value = data.lyrics;
+        document.querySelector("input#playlist").value = data.playlist.id;
 
         trackid = data.id;
       });
@@ -46,8 +47,9 @@ document
     let artist = formElements["artist"].value;
     let album = formElements["album"].value;
     let genre = formElements["genre"].value;
-    let playtime = formElements["playtime"].value;
+    let duration = formElements["playtime"].value;
     let lyrics = formElements["lyrics"].value;
+    let playlist = formElements["playlist"].value;
 
     let data = {
       title: title,
