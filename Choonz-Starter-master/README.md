@@ -81,12 +81,14 @@ working together more closely than unit testing.
 
 Please view the Documentation section within the repository for additional information. 
 
-## Acknowledgements
+## Authors
 
 * **Samuel Goodland** - [Sam Goodland](https://github.com/STGoodlandWork/)
 * **Myles Brathwaite** - [Myles Brathwaite](https://github.com/MylesBrathQA/)
 * **Syed Mahian** - [Syed Mahian](https://github.com/syedmahian/)
 * **Benediktas Noreika** - [Ben Noreika](https://github.com/noreb001/)
+
+## Acknowledgements
 
 - **Client** - [**Angelica Charry**](https://github.com/acharry) - **Software Delivery Manager**
 - **Product Owner** - [**Edward Reynolds**](https://github.com/Edrz-96) - **Initial work (testing, specification)**
