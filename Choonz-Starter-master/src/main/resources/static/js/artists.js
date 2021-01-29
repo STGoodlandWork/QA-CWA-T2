@@ -106,9 +106,4 @@ function deleteArtist(id) {
     });
 }
 
-function myFunction(){
 
-  sessionStorage.setItem("name", data.name);
-  console.log(data.name);
-
-}

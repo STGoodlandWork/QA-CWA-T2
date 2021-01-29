@@ -55,9 +55,8 @@
 
     <!--Jumbotron-->
     <div class="jumbotron bg-primary text-light">
-        <h1 class="display-3 text-light">Response</h1>
-        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to
-            featured content or information.</p>
+        <h1 class="display-3 text-light">Edit track</h1>
+        
     </div>
 
     <!--/Jumbotron-->
@@ -67,11 +66,11 @@
         <br>
 
         <br>
-        <h3 class="display-4">List of tracks on album</h3>
+        <h3 class="display-4">Edit this track</h3>
         <br>
 
 
-        <h1 class="display-4">Update an genre</h1>
+
         <br>
         <form method="post" class="viewRecord">
 
@@ -99,11 +98,16 @@
                 <label for="exampleInputEmail1">Lyrics:</label>
                 <input type="text" class="form-control" id="lyrics" a>
             </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Name or ID of playlist:</label>
+                <input type="text" class="form-control" id="playlist" a>
+            </div>
+
 
 
 
             <br>
-            <button type="" class="btn btn-success" onclick="location.href='tracks.html';"
+            <button type="" class="btn btn-success" 
                 value="update">Submit</button>
             <button type="button" class="btn btn-secondary" onclick="location.href='tracks.html';">Cancel</button>
 

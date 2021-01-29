@@ -155,7 +155,7 @@ function getTrackData(jsondata){
                myDelButton.className ="btn btn-danger pull-right";
                myDelButton.onclick = function() {
               
-                updateTrackList(commentRecord.id, null);
+                updateTrackList(commentRecord.id, 2);
                }
                
                myDelButton.appendChild(myButtonValue1);

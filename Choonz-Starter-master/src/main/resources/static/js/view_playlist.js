@@ -93,7 +93,7 @@ function getData(id){
              row.appendChild(th2)
 
              let th3 = document.createElement("th");
-             let text3 = document.createTextNode("Duration (minutes)");
+             let text3 = document.createTextNode("Duration (Seconds)");
              th3.appendChild(text3);
              row.appendChild(th3)
            
@@ -108,7 +108,7 @@ function getData(id){
               let cell = row.insertCell();
               if(values == "duration") {
                  
-                let text = document.createTextNode((commentRecord[values]/60) );
+                let text = document.createTextNode(commentRecord[values] );
                 cell.appendChild(text);
 
               }
@@ -128,7 +128,7 @@ function getData(id){
               let myViewButton = document.createElement("a");
               let myButtonValue = document.createTextNode("View")
               myViewButton.className ="btn btn-warning pull-right";
-              myViewButton.href="readOne.html?id="+commentRecord.id;
+              myViewButton.href="view_track.html?id="+commentRecord.id;
               myViewButton.appendChild(myButtonValue);
               newCell.appendChild(myViewButton)
              
