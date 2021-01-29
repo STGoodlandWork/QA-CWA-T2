@@ -106,7 +106,7 @@ function getData(id){
               let myViewButton = document.createElement("a");
               let myButtonValue = document.createTextNode("View")
               myViewButton.className ="btn btn-warning pull-right";
-              myViewButton.href="readOne.html?id="+commentRecord.id;
+              myViewButton.href="view.html?id="+commentRecord.id;
               myViewButton.appendChild(myButtonValue);
               newCell.appendChild(myViewButton)
              

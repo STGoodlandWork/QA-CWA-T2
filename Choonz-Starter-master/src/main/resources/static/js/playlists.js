@@ -31,10 +31,7 @@ async function readPlaylist(playlistName) {
   let data = await response.json();
   console.log(data);
 
-  data.forEach((playlist) => {
-    console.log(playlist.name);
-    createCard(playlist);
-  });
+  window.location.href = "view_playlist.html?=" + data[0].id;
 }
 
 // ReadAll for Tracks

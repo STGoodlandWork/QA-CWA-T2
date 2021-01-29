@@ -34,10 +34,7 @@ async function readGenre(genreName) {
   let data = await response.json();
   console.log(data);
 
-  data.forEach((genre) => {
-    console.log(genre.name);
-    createCard(genre);
-  });
+  window.location.href = "view_genre.html?=" + data[0].id;
 }
 
 // ReadAll for Tracks
@@ -73,17 +70,22 @@ function createCard(data) {
   let myDiv = document.querySelector("#GenreDisplay");
 
   let tempString =
-    '<div class="card text-white bg-dark mb-3 inlineCard" style="max-width: 18rem;">';
-  tempString += '<div class="card-header">Tracks</div>';
+    '<div class="card text-white bg-dark mb-3 inlineCard" style="max-width: 20rem;">';
+  tempString += '<div class="card-header">Genre</div>';
   tempString += '<div class="card-body">';
   tempString += '<h5 class="card-title">' + data.name + "</h5>";
-  tempString += '<button type="button" class="btn btn-warning">Update</button>';
   tempString +=
-    "<button type = 'button' class='btn btn-danger' data-id='" +
+    '<button type="button" onclick="window.location.href=\'view_genre.html?=' +
     data.id +
-    "' class='delete' onclick='deleteGenre(" +
+    '\';" class="btn btn-success">View</button>';
+  tempString +=
+    '<button type="button" onclick="window.location.href=\'update_artist.html?=' +
     data.id +
-    ")'> Delete</button>";
+    '\';" class="btn btn-warning">Update</button>';
+  tempString +=
+    '<button type="button" onclick="deleteGenre(' +
+    data.id +
+    ')" class="btn btn-danger">Delete</button>';
   tempString += " </div>";
   tempString += "</div>";
 
